@@ -1,0 +1,12 @@
+{
+  "original_id": "feat_003/tc_024",
+  "entity_type": "testcase",
+  "archived_at": "2026-09-17T15:29:28.548771",
+  "archived_by": "",
+  "reason": "User yêu cầu xóa",
+  "archive_path": "C:\\WorkSpace\\PycharmProjects\\qa-agent\\agent_projects\\app_login\\archived\\feat_003_tc_024_20260917_152928",
+  "safe_name": "feat_003_tc_024",
+  "folder_name": "feat_003_input_validation_rules",
+  "feature_id": "feat_003",
+  "tc_id": "tc_024"
+}

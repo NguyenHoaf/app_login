@@ -18,12 +18,6 @@
       "created_at": "2026-09-13T09:02:00",
       "updated_at": "2026-09-13T09:05:19.131906"
     },
-    "tc_024": {
-      "feature_id": "feat_003",
-      "status": "active",
-      "created_at": "2026-09-13T09:02:00",
-      "updated_at": "2026-09-13T09:05:19.131906"
-    },
     "tc_025": {
       "feature_id": "feat_003",
       "status": "active",
@@ -41,8 +35,14 @@
       "status": "active",
       "created_at": "2026-09-13T09:02:00",
       "updated_at": "2026-09-13T09:05:19.131906"
+    },
+    "tc_043": {
+      "feature_id": "feat_003",
+      "status": "active",
+      "created_at": "2026-09-17T15:31:35.879812",
+      "updated_at": "2026-09-17T15:31:35.879812"
     }
   },
   "feature_id": "feat_003",
-  "updated_at": "2026-09-17T15:28:42.056657"
+  "updated_at": "2026-09-17T15:31:35.879812"
 }
