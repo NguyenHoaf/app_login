@@ -26,6 +26,15 @@ _pw_profiles/
 # Without this rule, git add -A stages these dead backups, shipping them to
 # the shared remote where every puller re-backs them up (.local_bak.local_bak …).
 *.local_bak
+# Process-local concurrency locks (lock_manager writes a .lock/.session.lock
+# at the project root AND inside features/<id>/ + documents/<doc>/). These are
+# per-machine primitives that must NEVER transport — a .lock shipped to remote
+# gets mirrored on pull, backed up to .lock.local_bak, and re-published next
+# round → the documented .local_bak cascade (.lock.local_bak.local_bak …).
+/.lock
+session.lock
+features/**/.lock
+documents/**/.lock
 trace_graph.json.bak
 session_log.jsonl.bak*
 # trace_graph.json is a derived artifact (rebuilt from source JSON on mtime

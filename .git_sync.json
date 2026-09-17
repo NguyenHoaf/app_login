@@ -2,20 +2,13 @@
   "remote_url": "https://github.com/NguyenHoaf/app_login.git",
   "branch": "main",
   "configured_by": "hoaf01",
-  "configured_at": "2026-09-17T15:14:16.979213",
+  "configured_at": "2026-09-17T16:54:45.405636",
   "sync_format_version": 1,
   "last_publish": {
-    "commit_sha": "acce81a",
+    "commit_sha": "055d2f3",
     "by": "hoaf01",
-    "at": "2026-09-17T15:25:21.001150",
-    "summary": "qa-agent publish (sync_app2) @ 2026-09-17T15:25 by hoaf01 — archive tc_004"
+    "at": "2026-09-17T16:54:46.285240",
+    "summary": "initial setup"
   },
-  "last_update": {
-    "commit_sha": "39895cf",
-    "by": "unknown",
-    "at": "2026-09-17T15:34:51.229013",
-    "conflicts_resolved": 0,
-    "items_added": 1,
-    "pushed": true
-  }
+  "last_update": null
 }
