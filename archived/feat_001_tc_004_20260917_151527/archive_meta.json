@@ -1,0 +1,12 @@
+{
+  "original_id": "feat_001/tc_004",
+  "entity_type": "testcase",
+  "archived_at": "2026-09-17T15:15:27.763700",
+  "archived_by": "",
+  "reason": "User yêu cầu xóa tc_004",
+  "archive_path": "C:\\WorkSpace\\PycharmProjects\\qa-agent\\agent_projects\\sync_app2\\archived\\feat_001_tc_004_20260917_151527",
+  "safe_name": "feat_001_tc_004",
+  "folder_name": "feat_001_user_login_form",
+  "feature_id": "feat_001",
+  "tc_id": "tc_004"
+}

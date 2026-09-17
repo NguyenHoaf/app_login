@@ -1,0 +1,75 @@
+{
+  "feature_id": "feat_005",
+  "project_id": "sync_app2",
+  "title": "LOGIN trên Safari latest — thành công",
+  "description": "Verify login flow hoạt động đúng trên Safari browser latest version. Happy path cross-browser.",
+  "type": "functional",
+  "priority": "p1",
+  "status": "active",
+  "layer": "ui",
+  "preconditions": [
+    "Safari browser latest version installed",
+    "User có account hợp lệ",
+    "Trang login đã load"
+  ],
+  "test_data": "Email: test@example.com, Password: SecurePass123!",
+  "steps": [
+    {
+      "step_number": 1,
+      "action": "Mở Safari browser, navigate đến URL login page",
+      "expected": "Login form hiển thị đúng trên Safari"
+    },
+    {
+      "step_number": 2,
+      "action": "Enter email 'test@example.com'",
+      "expected": "Email field accept input"
+    },
+    {
+      "step_number": 3,
+      "action": "Enter password 'SecurePass123!'",
+      "expected": "Password field masked"
+    },
+    {
+      "step_number": 4,
+      "action": "Click 'Login' button",
+      "expected": "API call thành công, response 200"
+    },
+    {
+      "step_number": 5,
+      "action": "Verify redirect và UI sau login",
+      "expected": "Redirect đến dashboard, user info hiển thị đúng, layout không bị lỗi"
+    }
+  ],
+  "expected_result": "User đăng nhập thành công trên Safari latest, UI hiển thị đúng",
+  "covers": [
+    {
+      "feature_id": "feat_005",
+      "ac_id": "ac_002",
+      "coverage_type": "happy"
+    }
+  ],
+  "tags": [
+    "login",
+    "safari",
+    "cross_browser"
+  ],
+  "estimated_duration": 5,
+  "automation_feasibility": {
+    "automatable": true,
+    "automation_tools": [
+      "playwright"
+    ],
+    "automation_challenges": [
+      "Cần Safari environment — playwright chỉ chạy Safari trên macOS"
+    ]
+  },
+  "testcase_id": "tc_037",
+  "created_at": "2026-09-17T15:18:52.992997",
+  "updated_at": "2026-09-17T15:18:52.992997",
+  "content_updated_at": "2026-09-17T15:18:52.992997",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "46385d5be2408d76c3211b02487ccfd941321b40bda45a8e44916790eb027402",
+  "schema_version": "3.0.0",
+  "generation": 1
+}

@@ -1,0 +1,68 @@
+{
+  "feature_id": "feat_005",
+  "project_id": "sync_app2",
+  "title": "LOGIN trên browser version quá cũ (3+ major behind) — cảnh báo hoặc chặn",
+  "description": "Verify BR001: browser version quá cũ (ngoài 2 major versions) bị chặn hoặc hiển thị cảnh báo.",
+  "type": "functional",
+  "priority": "p2",
+  "status": "active",
+  "layer": "ui",
+  "preconditions": [
+    "Browser version 3+ major behind installed (e.g. Chrome 100 khi latest là 104+)"
+  ],
+  "test_data": "Email: test@example.com, Password: SecurePass123!, Outdated browser version",
+  "steps": [
+    {
+      "step_number": 1,
+      "action": "Mở outdated browser version, navigate đến login page",
+      "expected": "Trang hiển thị cảnh báo 'Browser not supported' hoặc chặn login"
+    },
+    {
+      "step_number": 2,
+      "action": "Kiểm tra nội dung cảnh báo",
+      "expected": "Thông báo yêu cầu nâng cấp browser lên version mới nhất hoặc trong 2 major versions gần nhất"
+    },
+    {
+      "step_number": 3,
+      "action": "Thử click Login button (nếu có)",
+      "expected": "Nếu chặn cứng: button disabled hoặc không phản hồi. Nếu cảnh báo: login vẫn hoạt động nhưng có warning"
+    }
+  ],
+  "expected_result": "Browser quá cũ bị chặn hoặc hiển thị cảnh báo clear yêu cầu nâng cấp",
+  "covers": [
+    {
+      "feature_id": "feat_005",
+      "ac_id": "ac_001",
+      "coverage_type": "boundary"
+    },
+    {
+      "feature_id": "feat_005",
+      "ac_id": "ac_002",
+      "coverage_type": "boundary"
+    }
+  ],
+  "tags": [
+    "cross_browser",
+    "backward_compatibility",
+    "boundary"
+  ],
+  "estimated_duration": 4,
+  "automation_feasibility": {
+    "automatable": true,
+    "automation_tools": [
+      "playwright"
+    ],
+    "automation_challenges": [
+      "Cần outdated browser binary cho test"
+    ]
+  },
+  "testcase_id": "tc_040",
+  "created_at": "2026-09-17T15:18:52.992997",
+  "updated_at": "2026-09-17T15:18:52.992997",
+  "content_updated_at": "2026-09-17T15:18:52.992997",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "3c85b71c29aaffa9e1afee579a4866004d4220babdc316ba12e01707ae76b056",
+  "schema_version": "3.0.0",
+  "generation": 1
+}

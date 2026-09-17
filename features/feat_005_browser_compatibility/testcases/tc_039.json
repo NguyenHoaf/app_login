@@ -1,0 +1,70 @@
+{
+  "feature_id": "feat_005",
+  "project_id": "sync_app2",
+  "title": "LOGIN trên Chrome 1 major version cũ — vẫn hoạt động",
+  "description": "Verify BR001: hỗ trợ latest 2 major versions. Kiểm tra Chrome previous major version vẫn login được.",
+  "type": "functional",
+  "priority": "p2",
+  "status": "active",
+  "layer": "ui",
+  "preconditions": [
+    "Chrome browser previous major version (e.g. version-1) installed",
+    "User có account hợp lệ"
+  ],
+  "test_data": "Email: test@example.com, Password: SecurePass123!, Chrome previous major version",
+  "steps": [
+    {
+      "step_number": 1,
+      "action": "Mở Chrome previous major version, navigate đến login page",
+      "expected": "Login form hiển thị đúng, không có cảnh báo unsupported browser"
+    },
+    {
+      "step_number": 2,
+      "action": "Enter email 'test@example.com' và password 'SecurePass123!'",
+      "expected": "Input fields accept values"
+    },
+    {
+      "step_number": 3,
+      "action": "Click 'Login' button",
+      "expected": "API call thành công, response 200"
+    },
+    {
+      "step_number": 4,
+      "action": "Verify login thành công",
+      "expected": "Redirect đến dashboard, user info hiển thị đúng"
+    }
+  ],
+  "expected_result": "Login thành công trên Chrome previous major version, đáp ứng BR001 hỗ trợ latest 2 major versions",
+  "covers": [
+    {
+      "feature_id": "feat_005",
+      "ac_id": "ac_001",
+      "coverage_type": "boundary"
+    }
+  ],
+  "tags": [
+    "login",
+    "chrome",
+    "cross_browser",
+    "backward_compatibility"
+  ],
+  "estimated_duration": 5,
+  "automation_feasibility": {
+    "automatable": true,
+    "automation_tools": [
+      "playwright"
+    ],
+    "automation_challenges": [
+      "Cần cài đặt sẵn Chrome previous major version trên test environment"
+    ]
+  },
+  "testcase_id": "tc_039",
+  "created_at": "2026-09-17T15:18:52.992997",
+  "updated_at": "2026-09-17T15:18:52.992997",
+  "content_updated_at": "2026-09-17T15:18:52.992997",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "46d4df101a6817b88e2ec3a365fbd039d932a6d2f0c4a0b129af3a78c655fc8d",
+  "schema_version": "3.0.0",
+  "generation": 1
+}

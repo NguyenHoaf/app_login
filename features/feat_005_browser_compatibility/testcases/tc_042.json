@@ -1,0 +1,73 @@
+{
+  "feature_id": "feat_005",
+  "project_id": "sync_app2",
+  "title": "[NFR] Login form responsive — đúng layout trên mobile viewports",
+  "description": "Verify NFR001: responsive design - login form hiển thị đúng trên các mobile browsers/viewports.",
+  "type": "functional",
+  "priority": "p2",
+  "status": "active",
+  "layer": "ui",
+  "preconditions": [
+    "Mobile viewport emulation enabled"
+  ],
+  "test_data": "Viewports: iPhone 14 (390x844), Galaxy S21+ (412x915), iPad Mini (744x1133)",
+  "steps": [
+    {
+      "step_number": 1,
+      "action": "Set viewport iPhone 14 (390x844), navigate đến login page",
+      "expected": "Login form responsive: full width, font ≥16px, button dễ tap, không overflow"
+    },
+    {
+      "step_number": 2,
+      "action": "Kiểm tra layout alignment",
+      "expected": "Các field và button canh giữa, không overlap, scroll dọc OK"
+    },
+    {
+      "step_number": 3,
+      "action": "Set viewport iPad Mini (744x1133), refresh page",
+      "expected": "Login form hiển thị đúng trên tablet: layout không bị giãn quá mức"
+    },
+    {
+      "step_number": 4,
+      "action": "Set viewport Galaxy S21+ (412x915)",
+      "expected": "Form hiển thị đúng trên Android viewport"
+    },
+    {
+      "step_number": 5,
+      "action": "Thực hiện login flow trên mobile viewport",
+      "expected": "Login thành công, dashboard responsive"
+    }
+  ],
+  "expected_result": "Login form hiển thị responsive và đúng layout trên tất cả mobile viewports",
+  "covers": [
+    {
+      "feature_id": "feat_005",
+      "nfr_id": "NFR001",
+      "coverage_type": "nfr"
+    }
+  ],
+  "tags": [
+    "responsive",
+    "mobile",
+    "nfr"
+  ],
+  "estimated_duration": 5,
+  "automation_feasibility": {
+    "automatable": true,
+    "automation_tools": [
+      "playwright"
+    ],
+    "automation_challenges": [
+      "Cần emulated mobile viewport — playwright supports built-in device emulation"
+    ]
+  },
+  "testcase_id": "tc_042",
+  "created_at": "2026-09-17T15:18:59.865315",
+  "updated_at": "2026-09-17T15:18:59.865315",
+  "content_updated_at": "2026-09-17T15:18:59.865315",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "7e9543af98e53f4721b0a608c00bfb1529ef1ebf1fc11649f8866a2df8956cc9",
+  "schema_version": "3.0.0",
+  "generation": 1
+}

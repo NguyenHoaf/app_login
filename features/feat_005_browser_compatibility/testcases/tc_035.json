@@ -1,0 +1,74 @@
+{
+  "feature_id": "feat_005",
+  "project_id": "sync_app2",
+  "title": "LOGIN trên Chrome latest — thành công",
+  "description": "Verify login flow hoạt động đúng trên Chrome browser latest version. Happy path cho ac_001.",
+  "type": "functional",
+  "priority": "p1",
+  "status": "active",
+  "layer": "ui",
+  "preconditions": [
+    "Chrome browser latest version installed",
+    "User có account hợp lệ",
+    "Trang login đã load"
+  ],
+  "test_data": "Email: test@example.com, Password: SecurePass123!",
+  "steps": [
+    {
+      "step_number": 1,
+      "action": "Mở Chrome browser, navigate đến URL login page",
+      "expected": "Login form hiển thị với email, password fields và Login button"
+    },
+    {
+      "step_number": 2,
+      "action": "Enter email 'test@example.com'",
+      "expected": "Email field accept input, hiển thị đúng"
+    },
+    {
+      "step_number": 3,
+      "action": "Enter password 'SecurePass123!'",
+      "expected": "Password field masked hiển thị dấu *"
+    },
+    {
+      "step_number": 4,
+      "action": "Click 'Login' button",
+      "expected": "API call /api/auth/login trả về 200, hệ thống xử lý thành công"
+    },
+    {
+      "step_number": 5,
+      "action": "Verify redirect và UI sau login",
+      "expected": "Redirect đến dashboard page, user info hiển thị đúng"
+    }
+  ],
+  "expected_result": "User đăng nhập thành công trên Chrome latest, được redirect tới dashboard, session hoạt động",
+  "covers": [
+    {
+      "feature_id": "feat_005",
+      "ac_id": "ac_001",
+      "coverage_type": "happy"
+    }
+  ],
+  "tags": [
+    "login",
+    "chrome",
+    "cross_browser",
+    "smoke"
+  ],
+  "estimated_duration": 5,
+  "automation_feasibility": {
+    "automatable": true,
+    "automation_tools": [
+      "playwright"
+    ],
+    "automation_challenges": []
+  },
+  "testcase_id": "tc_035",
+  "created_at": "2026-09-17T15:18:52.992997",
+  "updated_at": "2026-09-17T15:18:52.992997",
+  "content_updated_at": "2026-09-17T15:18:52.992997",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "440730c5757c24fead99fbecd481777704d2063e8ad644fe75623476ff63f59b",
+  "schema_version": "3.0.0",
+  "generation": 1
+}

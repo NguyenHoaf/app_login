@@ -1,0 +1,78 @@
+{
+  "feature_id": "feat_005",
+  "project_id": "sync_app2",
+  "title": "LOGIN trên mobile browser — responsive design",
+  "description": "Verify NFR001: login form hiển thị đúng trên mobile browsers (Chrome mobile, Safari mobile).",
+  "type": "functional",
+  "priority": "p2",
+  "status": "active",
+  "layer": "ui",
+  "preconditions": [
+    "Mobile viewport được setup (e.g. iPhone 12/13, Samsung Galaxy S21)"
+  ],
+  "test_data": "Viewport: 390x844 (iPhone 14), 412x915 (Galaxy S21+), User: test@example.com / SecurePass123!",
+  "steps": [
+    {
+      "step_number": 1,
+      "action": "Set viewport kích thước mobile (390x844) trên Chrome, navigate đến login page",
+      "expected": "Login form hiển thị mobile-responsive: form full width, font size đọc được, button dễ tap"
+    },
+    {
+      "step_number": 2,
+      "action": "Enter email 'test@example.com'",
+      "expected": "Bàn phím mobile tự động hiện, input field scroll vào view"
+    },
+    {
+      "step_number": 3,
+      "action": "Enter password 'SecurePass123!'",
+      "expected": "Password field hoạt động, text masked"
+    },
+    {
+      "step_number": 4,
+      "action": "Tap 'Login' button",
+      "expected": "API call thành công, response 200"
+    },
+    {
+      "step_number": 5,
+      "action": "Verify dashboard hiển thị đúng trên mobile",
+      "expected": "Dashboard responsive, không bị tràn layout, tap targets đủ lớn"
+    }
+  ],
+  "expected_result": "Login thành công trên mobile viewport, UI responsive và không bị lỗi layout",
+  "covers": [
+    {
+      "feature_id": "feat_005",
+      "ac_id": "ac_001",
+      "coverage_type": "happy"
+    },
+    {
+      "feature_id": "feat_005",
+      "ac_id": "ac_002",
+      "coverage_type": "happy"
+    }
+  ],
+  "tags": [
+    "responsive",
+    "mobile",
+    "cross_browser"
+  ],
+  "estimated_duration": 7,
+  "automation_feasibility": {
+    "automatable": true,
+    "automation_tools": [
+      "playwright"
+    ],
+    "automation_challenges": [
+      "Cần emulated mobile device hoặc real device"
+    ]
+  },
+  "testcase_id": "tc_041",
+  "created_at": "2026-09-17T15:18:52.992997",
+  "updated_at": "2026-09-17T15:18:52.992997",
+  "content_updated_at": "2026-09-17T15:18:52.992997",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "5049e07408114b6de7fec1488401486fb87dd880663a6dd5224f5d80136160de",
+  "schema_version": "3.0.0",
+  "generation": 1
+}

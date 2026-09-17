@@ -5,10 +5,10 @@
   "configured_at": "2026-09-17T15:14:16.979213",
   "sync_format_version": 1,
   "last_publish": {
-    "commit_sha": "001716b",
+    "commit_sha": "1e3e905",
     "by": "hoaf01",
-    "at": "2026-09-17T15:14:17.547410",
-    "summary": "initial setup"
+    "at": "2026-09-17T15:14:40.187496",
+    "summary": "qa-agent publish (sync_app2) @ 2026-09-17T15:14:37.692159 by hoaf01"
   },
   "last_update": {
     "commit_sha": "024cc43",

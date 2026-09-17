@@ -1,0 +1,66 @@
+{
+  "title": "Email input field chấp nhận nhiều định dạng email hợp lệ",
+  "description": "Verify rằng email input field chấp nhận các định dạng email hợp lệ khác nhau (basic, có dấu +, subdomain).",
+  "type": "functional",
+  "priority": "p1",
+  "status": "active",
+  "layer": "ui",
+  "preconditions": [
+    "Trang /login đã load"
+  ],
+  "test_data": "Emails: user@example.com, user+tag@example.com, user@sub.example.com",
+  "steps": [
+    {
+      "step_number": 1,
+      "action": "Navigate to /login page",
+      "expected": "Login form hiển thị"
+    },
+    {
+      "step_number": 2,
+      "action": "Nhập email 'user@example.com' và bất kỳ password hợp lệ nào",
+      "expected": "Email field accept input"
+    },
+    {
+      "step_number": 3,
+      "action": "Làm sạch field và thử với 'user+tag@example.com'",
+      "expected": "Email field accept input"
+    },
+    {
+      "step_number": 4,
+      "action": "Làm sạch field và thử với 'user@sub.example.com'",
+      "expected": "Email field accept input"
+    }
+  ],
+  "expected_result": "Email field chấp nhận tất cả định dạng email hợp lệ",
+  "covers": [
+    {
+      "feature_id": "feat_001",
+      "ac_id": "ac_001",
+      "coverage_type": "boundary"
+    }
+  ],
+  "tags": [
+    "login",
+    "validation",
+    "email"
+  ],
+  "estimated_duration": 3,
+  "created_at": "2026-09-13T09:00:00",
+  "automation_feasibility": {
+    "automatable": true,
+    "automation_tools": [
+      "playwright"
+    ],
+    "automation_challenges": []
+  },
+  "testcase_id": "tc_004",
+  "feature_id": "feat_001",
+  "project_id": "app_login",
+  "updated_at": "2026-09-13T09:02:33.111710",
+  "content_updated_at": "2026-09-13T09:02:33.111710",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "826dca4400dbcca55e9b912df829aa0d0bafc7e85740d52b98ca8250f0358773",
+  "schema_version": "3.0.0",
+  "generation": 1
+}

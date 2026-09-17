@@ -1,0 +1,73 @@
+{
+  "feature_id": "feat_005",
+  "project_id": "sync_app2",
+  "title": "LOGIN trên Edge latest — thành công",
+  "description": "Verify login flow hoạt động đúng trên Edge browser latest version. Happy path cross-browser.",
+  "type": "functional",
+  "priority": "p1",
+  "status": "active",
+  "layer": "ui",
+  "preconditions": [
+    "Edge browser latest version installed",
+    "User có account hợp lệ",
+    "Trang login đã load"
+  ],
+  "test_data": "Email: test@example.com, Password: SecurePass123!",
+  "steps": [
+    {
+      "step_number": 1,
+      "action": "Mở Edge browser, navigate đến URL login page",
+      "expected": "Login form hiển thị đúng trên Edge"
+    },
+    {
+      "step_number": 2,
+      "action": "Enter email 'test@example.com'",
+      "expected": "Email field accept input"
+    },
+    {
+      "step_number": 3,
+      "action": "Enter password 'SecurePass123!'",
+      "expected": "Password field masked"
+    },
+    {
+      "step_number": 4,
+      "action": "Click 'Login' button",
+      "expected": "API call thành công, response 200"
+    },
+    {
+      "step_number": 5,
+      "action": "Verify redirect và UI sau login",
+      "expected": "Redirect đến dashboard, user info hiển thị đúng, layout không bị lỗi"
+    }
+  ],
+  "expected_result": "User đăng nhập thành công trên Edge latest, UI hiển thị đúng",
+  "covers": [
+    {
+      "feature_id": "feat_005",
+      "ac_id": "ac_002",
+      "coverage_type": "happy"
+    }
+  ],
+  "tags": [
+    "login",
+    "edge",
+    "cross_browser"
+  ],
+  "estimated_duration": 5,
+  "automation_feasibility": {
+    "automatable": true,
+    "automation_tools": [
+      "playwright"
+    ],
+    "automation_challenges": []
+  },
+  "testcase_id": "tc_038",
+  "created_at": "2026-09-17T15:18:52.992997",
+  "updated_at": "2026-09-17T15:18:52.992997",
+  "content_updated_at": "2026-09-17T15:18:52.992997",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "a0d70b5b7b7abe07fa289c151059d4a4e0087e866561dd3d7160e33c721a8c7d",
+  "schema_version": "3.0.0",
+  "generation": 1
+}
