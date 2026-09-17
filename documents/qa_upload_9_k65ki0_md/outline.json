@@ -1,0 +1,147 @@
+{
+  "format_version": "1.0",
+  "doc_id": "qa_upload_9_k65ki0_md",
+  "filename": "qa_upload_9_k65ki0.md",
+  "parser_tier": "markdown",
+  "warnings": [],
+  "coverage": 1.0,
+  "merkle_root": "58e43c51decbeadb1a85402d04654b1c19e3c64351e6908dff20038f052709a5",
+  "node_count": 12,
+  "built_at": "2026-09-13T08:54:11.850835",
+  "nodes": [
+    {
+      "node_id": "sec_001",
+      "title": "User Login Feature Specification",
+      "level": 1,
+      "content_hash": "5815310b950227736445ec5ebf9cda75a07d28bfd4c6afecb8a884b4cd447413",
+      "merkle_hash": "2940cb13687a7e5e7682c00ff6006946ec475238c4fa7b73ea7a2edb556a0ae0",
+      "char_start": 0,
+      "char_end": 2169,
+      "children": [
+        {
+          "node_id": "sec_001_001",
+          "title": "1. Overview",
+          "level": 2,
+          "content_hash": "71de5254a4b1dbfb148a4dd30822e39e68a07726c0e291630298def093368f84",
+          "merkle_hash": "",
+          "char_start": 36,
+          "char_end": 163,
+          "children": [],
+          "source_format": ""
+        },
+        {
+          "node_id": "sec_001_002",
+          "title": "2. Functional Requirements",
+          "level": 2,
+          "content_hash": "02e9d545bfb96a7d7c66308d2cbc78d1a95efc57724035493e03fbc019738d11",
+          "merkle_hash": "",
+          "char_start": 163,
+          "char_end": 1456,
+          "children": [
+            {
+              "node_id": "sec_001_002_001",
+              "title": "2.1 Login Form",
+              "level": 3,
+              "content_hash": "bf5736d5c684838845a74ac7fa7a2c8f6ab49a9e8d86ae784cfe6df57d1696bc",
+              "merkle_hash": "",
+              "char_start": 194,
+              "char_end": 457,
+              "children": [],
+              "source_format": ""
+            },
+            {
+              "node_id": "sec_001_002_002",
+              "title": "2.2 Authentication Process",
+              "level": 3,
+              "content_hash": "2b5cf93c147fed587699bcc82c6b550bdbade7f339862211a19640a68b4ca474",
+              "merkle_hash": "",
+              "char_start": 457,
+              "char_end": 727,
+              "children": [],
+              "source_format": ""
+            },
+            {
+              "node_id": "sec_001_002_003",
+              "title": "2.3 Validation Rules",
+              "level": 3,
+              "content_hash": "bca0c5ec255da92f77071f56790762fb44917e531ed298870b42070fd404e43a",
+              "merkle_hash": "",
+              "char_start": 727,
+              "char_end": 899,
+              "children": [],
+              "source_format": ""
+            },
+            {
+              "node_id": "sec_001_002_004",
+              "title": "2.4 Error Handling",
+              "level": 3,
+              "content_hash": "5d575f63369e1aaa6ae39c5ea813c6fe7178e0df959b33f9b0dfc7040671bbe4",
+              "merkle_hash": "",
+              "char_start": 899,
+              "char_end": 1236,
+              "children": [],
+              "source_format": ""
+            },
+            {
+              "node_id": "sec_001_002_005",
+              "title": "2.5 Security Requirements",
+              "level": 3,
+              "content_hash": "d05250795cd494669c5eb54540c57543bc64124879acbde8b78b58d1df6eb6c8",
+              "merkle_hash": "",
+              "char_start": 1236,
+              "char_end": 1456,
+              "children": [],
+              "source_format": ""
+            }
+          ],
+          "source_format": ""
+        },
+        {
+          "node_id": "sec_001_003",
+          "title": "3. Edge Cases",
+          "level": 2,
+          "content_hash": "b90ca5698f9651beab70898fd5158a996f717d55b90f5743a59e012be22c7ff8",
+          "merkle_hash": "",
+          "char_start": 1456,
+          "char_end": 1658,
+          "children": [],
+          "source_format": ""
+        },
+        {
+          "node_id": "sec_001_004",
+          "title": "4. Success Criteria",
+          "level": 2,
+          "content_hash": "1494429ac0c7cf3f9e738aa6e29c2806d28030c948670270ae2bc2441d3cb456",
+          "merkle_hash": "",
+          "char_start": 1658,
+          "char_end": 1949,
+          "children": [],
+          "source_format": ""
+        },
+        {
+          "node_id": "sec_001_005",
+          "title": "5. New Feature - Two-Factor Authentication",
+          "level": 2,
+          "content_hash": "99290237009f5fff8387315d9f4207d2a61de840dfdd4bc01c0d8da5f9dfaa92",
+          "merkle_hash": "",
+          "char_start": 1949,
+          "char_end": 2077,
+          "children": [],
+          "source_format": ""
+        },
+        {
+          "node_id": "sec_001_006",
+          "title": "6. Updated Requirements",
+          "level": 2,
+          "content_hash": "6a5cc77a2c371b67cdc7815bcce7da182ceb049f86c6f02c5c19cb7c4e0369c7",
+          "merkle_hash": "",
+          "char_start": 2077,
+          "char_end": 2169,
+          "children": [],
+          "source_format": ""
+        }
+      ],
+      "source_format": "markdown"
+    }
+  ]
+}

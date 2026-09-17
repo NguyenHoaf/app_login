@@ -1,0 +1,15 @@
+# Core test framework
+pytest>=8.0,<9.0
+pytest-playwright>=0.4.0,<1.0.0
+playwright>=1.42.0,<2.0.0
+
+# HTTP / API testing
+requests>=2.31.0,<3.0.0
+
+# Data & reporting
+pyyaml>=6.0,<7.0
+pytest-html>=4.0,<5.0
+pytest-xdist>=3.5,<4.0           # parallel execution
+
+# Linting
+pytest-check>=2.0,<3.0           # soft assertions (non-blocking)

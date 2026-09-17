@@ -1,0 +1,65 @@
+{
+  "testcase_id": "tc_029",
+  "feature_id": "feat_002",
+  "project_id": "app_login",
+  "title": "ĐĂNG NHẬP — email không tồn tại → server error (DB timeout)",
+  "description": "Verify behavior khi hệ thống gặp lỗi DB/service khi kiểm tra email không tồn tại.",
+  "type": "functional",
+  "priority": "p1",
+  "status": "active",
+  "layer": "api",
+  "preconditions": [
+    "User nhập email chưa đăng ký trong hệ thống",
+    "Hệ thống gặp lỗi (DB connection timeout)"
+  ],
+  "test_data": "Email: nonexistent@example.com, Password: AnyPass123!",
+  "steps": [
+    {
+      "step_number": 1,
+      "action": "Gọi POST /api/login với email không tồn tại và password bất kỳ",
+      "expected": "Hệ thống trả về HTTP 500 hoặc timeout error"
+    },
+    {
+      "step_number": 2,
+      "action": "Verify error message hiển thị",
+      "expected": "Hiển thị 'Unable to process login. Please try again later' phù hợp với error flow trong spec"
+    },
+    {
+      "step_number": 3,
+      "action": "Verify không có redirect",
+      "expected": "User vẫn ở trang /login, không có session token nào được tạo"
+    }
+  ],
+  "expected_result": "Khi hệ thống gặp lỗi xử lý email không tồn tại, hiển thị error message generic, không redirect, không tạo session.",
+  "covers": [
+    {
+      "feature_id": "feat_002",
+      "ac_id": "ac_002",
+      "coverage_type": "error"
+    }
+  ],
+  "tags": [
+    "authentication",
+    "login",
+    "error_handling",
+    "api"
+  ],
+  "estimated_duration": 2,
+  "created_at": "2026-09-13T14:00:00Z",
+  "automation_feasibility": {
+    "automatable": true,
+    "automation_tools": [
+      "playwright"
+    ],
+    "automation_challenges": [
+      "Cần inject lỗi server (DB timeout) — có thể dùng mock/stub"
+    ]
+  },
+  "updated_at": "2026-09-13T16:46:23.260279",
+  "content_updated_at": "2026-09-13T16:46:23.260279",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "a7c5a5d47fe3d3695b62e80dcba3a62783e8f119c2c404d611100b2e06c50ac2",
+  "schema_version": "3.0.0",
+  "generation": 1
+}

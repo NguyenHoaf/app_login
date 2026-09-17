@@ -1,0 +1,56 @@
+{
+  "title": "API — POST /api/login email không tồn tại trả về 401",
+  "description": "Verify API trả về 401 khi email không tồn tại.",
+  "type": "api",
+  "priority": "p1",
+  "status": "active",
+  "layer": "api",
+  "preconditions": [
+    "Server đang chạy"
+  ],
+  "test_data": "POST /api/login Body: {email: 'ghost@unknown.com', password: 'Test123!'}",
+  "steps": [
+    {
+      "step_number": 1,
+      "action": "Send POST request với email không tồn tại",
+      "expected": "Response status 401 Unauthorized"
+    },
+    {
+      "step_number": 2,
+      "action": "Kiểm tra error message",
+      "expected": "Response body chứa 'No account found with this email'"
+    }
+  ],
+  "expected_result": "API trả về 401 + error message",
+  "covers": [
+    {
+      "feature_id": "feat_002",
+      "ac_id": "ac_002",
+      "coverage_type": "negative"
+    }
+  ],
+  "tags": [
+    "authentication",
+    "api",
+    "negative"
+  ],
+  "estimated_duration": 1,
+  "created_at": "2026-09-13T09:02:00",
+  "automation_feasibility": {
+    "automatable": true,
+    "automation_tools": [
+      "playwright"
+    ],
+    "automation_challenges": []
+  },
+  "testcase_id": "tc_018",
+  "feature_id": "feat_002",
+  "project_id": "app_login",
+  "updated_at": "2026-09-13T09:05:10.706613",
+  "content_updated_at": "2026-09-13T09:05:10.706613",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "b69c2e917688e579f6015cebe1440351f8f8bf9dc2e39fed3679c231a6238c3c",
+  "schema_version": "3.0.0",
+  "generation": 1
+}

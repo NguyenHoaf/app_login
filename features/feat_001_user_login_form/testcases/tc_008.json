@@ -1,0 +1,61 @@
+{
+  "title": "XSS attempt trong input fields bị sanitized",
+  "description": "Verify rằng XSS payload trong email hoặc password field không được thực thi.",
+  "type": "security",
+  "priority": "p0",
+  "status": "active",
+  "layer": "e2e",
+  "preconditions": [
+    "Người dùng đang ở trang /login"
+  ],
+  "test_data": "Email: <script>alert('xss')</script>@test.com, Password: TestPass123!",
+  "steps": [
+    {
+      "step_number": 1,
+      "action": "Navigate to /login page",
+      "expected": "Login form hiển thị"
+    },
+    {
+      "step_number": 2,
+      "action": "Nhập XSS payload '<script>alert(\"xss\")</script>@test.com' vào email field",
+      "expected": "Input được accept, không có script execution"
+    },
+    {
+      "step_number": 3,
+      "action": "Nhập password và click 'Login'",
+      "expected": "Không có XSS execution, error message hiển thị bình thường"
+    }
+  ],
+  "expected_result": "XSS payload không thực thi",
+  "covers": [
+    {
+      "feature_id": "feat_001",
+      "ac_id": "ac_001",
+      "coverage_type": "negative"
+    }
+  ],
+  "tags": [
+    "login",
+    "security",
+    "xss"
+  ],
+  "estimated_duration": 3,
+  "created_at": "2026-09-13T09:00:00",
+  "automation_feasibility": {
+    "automatable": true,
+    "automation_tools": [
+      "playwright"
+    ],
+    "automation_challenges": []
+  },
+  "testcase_id": "tc_008",
+  "feature_id": "feat_001",
+  "project_id": "app_login",
+  "updated_at": "2026-09-13T09:02:33.111710",
+  "content_updated_at": "2026-09-13T09:02:33.111710",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "b76606b3c2e5bd272eddc7f62fa11db1b7c5d3c27c806a8767afcb7ec65fdffb",
+  "schema_version": "3.0.0",
+  "generation": 1
+}

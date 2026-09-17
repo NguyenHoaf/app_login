@@ -1,0 +1,47 @@
+# === QA-Agent project sync .gitignore (generated) ===
+# SUT credentials — KHÔNG BAO GIỜ commit (B15 environment.json holds
+# base_url + username/password/token in plaintext).
+environment.json
+environment.json.bak
+# B4 draft layer — unreviewed working state, collides noisily across testers.
+.draft/
+# Sync staging snapshots (ephemeral) — EXCEPT the deletion ledger, which is
+# shared state (a tester's intentional archive/delete must propagate to every
+# puller). So we ignore the whole .sync/ dir but un-ignore the ledger file.
+.sync/*
+!.sync/deletions.json
+# Regenerable / per-machine / internal artifacts.
+exports/
+excel_imports/
+screenshots/
+reports/
+__pycache__/
+*.pyc
+.pytest_cache/
+_pw_profiles/
+# Backups produced by atomic_write (.bak) — recoverable from git history.
+*.bak
+trace_graph.json.bak
+session_log.jsonl.bak*
+# trace_graph.json is a derived artifact (rebuilt from source JSON on mtime
+# change). Committing it only ships dead weight: the pull side discards it via
+# _is_stale (mtime differs across machines) and rebuilds locally anyway. Keeping
+# it out of git avoids huge meaningless diffs / merge conflicts.
+trace_graph.json
+# manifest.json (project-root document index) is likewise a derived index — it
+# is rebuilt by sync_update._rebuild_manifest_from_docmeta from the on-disk
+# documents/*/meta.json after every pull. Two testers each ingesting a doc would
+# otherwise produce a meaningless conflict here. The authoritative per-doc
+# meta.json files ARE synced (under documents/), so the index regenerates.
+#
+# IMPORTANT: anchor with a leading slash so ONLY the ROOT manifest.json is
+# ignored. Without it, git treats "manifest.json" as a path-segment pattern
+# matching at every depth, which would ALSO ignore ``scripts/manifest.json``
+# (the script↔testcase linkage manifest — a SOURCE-OF-TRUTH, NOT derived).
+# That silent over-match starved pullers of the script manifest: the Scripts
+# tab then showed "no manifest" + prompted an unnecessary Migrate that wiped
+# publisher-accumulated linkages/generated_from anchors.
+/manifest.json
+# Per-user agent runtime.
+agent_workspace/
+chat_sessions/

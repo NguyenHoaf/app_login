@@ -1,0 +1,66 @@
+{
+  "testcase_id": "tc_032",
+  "feature_id": "feat_002",
+  "project_id": "app_login",
+  "title": "ĐĂNG NHẬP — server error (DB timeout) → error message generic",
+  "description": "Verify khi hệ thống gặp lỗi server (DB timeout), hiển thị error message generic, không tạo session.",
+  "type": "functional",
+  "priority": "p1",
+  "status": "active",
+  "layer": "api",
+  "preconditions": [
+    "User có account hợp lệ: email=user@example.com",
+    "Hệ thống gặp lỗi DB timeout (mock/inject)"
+  ],
+  "test_data": "Email: user@example.com, Password: CorrectPass123!",
+  "steps": [
+    {
+      "step_number": 1,
+      "action": "Gọi POST /api/login với credentials hợp lệ trong điều kiện DB timeout",
+      "expected": "Hệ thống trả về HTTP 500 — Internal Server Error"
+    },
+    {
+      "step_number": 2,
+      "action": "Verify error response body",
+      "expected": "Response body chứa message 'Unable to process login. Please try again later'"
+    },
+    {
+      "step_number": 3,
+      "action": "Verify không có JWT token trong response",
+      "expected": "Không có access_token/refresh_token trong response"
+    }
+  ],
+  "expected_result": "DB timeout → HTTP 500 + error message generic, không tạo session.",
+  "covers": [
+    {
+      "feature_id": "feat_002",
+      "ac_id": "ac_005",
+      "coverage_type": "happy"
+    }
+  ],
+  "tags": [
+    "authentication",
+    "login",
+    "error_handling",
+    "api",
+    "server_error"
+  ],
+  "estimated_duration": 2,
+  "created_at": "2026-09-13T14:00:00Z",
+  "automation_feasibility": {
+    "automatable": true,
+    "automation_tools": [
+      "playwright"
+    ],
+    "automation_challenges": [
+      "Cần mock/inject DB timeout"
+    ]
+  },
+  "updated_at": "2026-09-13T16:46:23.260279",
+  "content_updated_at": "2026-09-13T16:46:23.260279",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "bfabcb72402d26942b985a2d59727d815464562750aec07d2b7a3020abd8f4a0",
+  "schema_version": "3.0.0",
+  "generation": 1
+}

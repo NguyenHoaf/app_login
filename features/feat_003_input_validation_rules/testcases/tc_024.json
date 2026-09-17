@@ -1,0 +1,62 @@
+{
+  "title": "Password vượt quá 32 ký tự — validation fail (boundary)",
+  "description": "Verify password 32 ký tự được accept, 33 ký tự bị reject.",
+  "type": "functional",
+  "priority": "p1",
+  "status": "active",
+  "layer": "e2e",
+  "preconditions": [
+    "Trang /login đã load"
+  ],
+  "test_data": "Password 32 ký tự + special, Password 33 ký tự",
+  "steps": [
+    {
+      "step_number": 1,
+      "action": "Navigate to /login page",
+      "expected": "Login form hiển thị"
+    },
+    {
+      "step_number": 2,
+      "action": "Nhập email + password 32 ký tự, click Login",
+      "expected": "Password được accept (pass max length)"
+    },
+    {
+      "step_number": 3,
+      "action": "Nhập email + password 33 ký tự, click Login",
+      "expected": "Password bị reject vì > 32 characters"
+    }
+  ],
+  "expected_result": "Boundary: 32 pass, 33 reject",
+  "covers": [
+    {
+      "feature_id": "feat_003",
+      "ac_id": "ac_003",
+      "coverage_type": "boundary"
+    }
+  ],
+  "tags": [
+    "validation",
+    "password",
+    "boundary",
+    "length"
+  ],
+  "estimated_duration": 3,
+  "created_at": "2026-09-13T09:02:00",
+  "automation_feasibility": {
+    "automatable": true,
+    "automation_tools": [
+      "playwright"
+    ],
+    "automation_challenges": []
+  },
+  "testcase_id": "tc_024",
+  "feature_id": "feat_003",
+  "project_id": "app_login",
+  "updated_at": "2026-09-13T09:05:19.131906",
+  "content_updated_at": "2026-09-13T09:05:19.131906",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "b13519007ea5e2cbd64089ddef5b5d82f52ee6ee40d296cdabf1ba7811733051",
+  "schema_version": "3.0.0",
+  "generation": 1
+}

@@ -1,0 +1,84 @@
+{
+  "testcase_id": "tc_028",
+  "feature_id": "feat_002",
+  "project_id": "app_login",
+  "title": "ĐĂNG NHẬP thành công — email hợp lệ + password đúng → redirect dashboard",
+  "description": "Verify user có account active đăng nhập thành công với email + password đúng, được redirect về /dashboard. Bổ sung happy path cho ac_002 và ac_003.",
+  "type": "functional",
+  "priority": "p0",
+  "status": "active",
+  "layer": "e2e",
+  "preconditions": [
+    "User có account active với email/password hợp lệ trong hệ thống",
+    "User chưa đăng nhập, đang ở trang /login",
+    "Không có session nào đang active"
+  ],
+  "test_data": "Email: testuser@example.com, Password: CorrectPass123!",
+  "steps": [
+    {
+      "step_number": 1,
+      "action": "Navigate to /login page",
+      "expected": "Login form hiển thị: email field, password field (masked), Login button, Forgot Password link"
+    },
+    {
+      "step_number": 2,
+      "action": "Nhập email 'testuser@example.com' vào email field",
+      "expected": "Email field hiển thị giá trị đã nhập, không có lỗi validation"
+    },
+    {
+      "step_number": 3,
+      "action": "Nhập password 'CorrectPass123!' vào password field",
+      "expected": "Password field hiển thị dấu asterisks (masked)"
+    },
+    {
+      "step_number": 4,
+      "action": "Click 'Login' button",
+      "expected": "Hệ thống gọi API POST /api/login với credentials. Response 200 OK kèm JWT token."
+    },
+    {
+      "step_number": 5,
+      "action": "Verify kết quả đăng nhập",
+      "expected": "User được redirect về /dashboard. Hiển thị thông tin user (tên/email). JWT token được lưu trong localStorage."
+    }
+  ],
+  "expected_result": "User đăng nhập thành công, redirect về /dashboard, JWT session token được tạo.",
+  "covers": [
+    {
+      "feature_id": "feat_002",
+      "ac_id": "ac_001",
+      "coverage_type": "happy"
+    },
+    {
+      "feature_id": "feat_002",
+      "ac_id": "ac_002",
+      "coverage_type": "happy"
+    },
+    {
+      "feature_id": "feat_002",
+      "ac_id": "ac_003",
+      "coverage_type": "happy"
+    }
+  ],
+  "tags": [
+    "authentication",
+    "login",
+    "smoke",
+    "happy_path"
+  ],
+  "estimated_duration": 3,
+  "created_at": "2026-09-13T14:00:00Z",
+  "automation_feasibility": {
+    "automatable": true,
+    "automation_tools": [
+      "playwright"
+    ],
+    "automation_challenges": []
+  },
+  "updated_at": "2026-09-13T16:46:23.260279",
+  "content_updated_at": "2026-09-13T16:46:23.260279",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "8a0494869cdaaaede52784b6f7f41e1875ff98cba867fb33e5d9b65b6b301df6",
+  "schema_version": "3.0.0",
+  "generation": 1
+}

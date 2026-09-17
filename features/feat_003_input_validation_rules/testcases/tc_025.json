@@ -1,0 +1,57 @@
+{
+  "title": "Password không chứa special characters — validation fail",
+  "description": "Verify password không có ký tự đặc biệt (chỉ alphanumeric) bị reject.",
+  "type": "functional",
+  "priority": "p1",
+  "status": "active",
+  "layer": "e2e",
+  "preconditions": [
+    "Trang /login đã load"
+  ],
+  "test_data": "Password: 'Password12345' (10 ký tự, letters+numbers, no special)",
+  "steps": [
+    {
+      "step_number": 1,
+      "action": "Navigate to /login page",
+      "expected": "Login form hiển thị"
+    },
+    {
+      "step_number": 2,
+      "action": "Nhập email hợp lệ + password 'Password12345', click Login",
+      "expected": "Password bị reject vì thiếu special characters"
+    }
+  ],
+  "expected_result": "Password thiếu special chars bị reject",
+  "covers": [
+    {
+      "feature_id": "feat_003",
+      "ac_id": "ac_003",
+      "coverage_type": "negative"
+    }
+  ],
+  "tags": [
+    "validation",
+    "password",
+    "negative",
+    "format"
+  ],
+  "estimated_duration": 2,
+  "created_at": "2026-09-13T09:02:00",
+  "automation_feasibility": {
+    "automatable": true,
+    "automation_tools": [
+      "playwright"
+    ],
+    "automation_challenges": []
+  },
+  "testcase_id": "tc_025",
+  "feature_id": "feat_003",
+  "project_id": "app_login",
+  "updated_at": "2026-09-13T09:05:19.131906",
+  "content_updated_at": "2026-09-13T09:05:19.131906",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "bbea97efb87e59df0aa542f17baa246d8d036b8bd7714bf2a872df7f860d9f9b",
+  "schema_version": "3.0.0",
+  "generation": 1
+}

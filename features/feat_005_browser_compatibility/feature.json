@@ -1,0 +1,70 @@
+{
+  "name": "Browser Compatibility",
+  "description": "Yêu cầu tương thích trình duyệt cho tính năng đăng nhập. Login feature phải hoạt động trên Chrome, Firefox, Safari, Edge (latest versions).",
+  "category": "technical",
+  "priority": "medium",
+  "sources": [
+    {
+      "doc_id": "qa_upload_9_k65ki0_md",
+      "doc_version": 1,
+      "role": "primary",
+      "source_locators": [
+        "Section 4. Success Criteria"
+      ],
+      "extracted_at": "2026-09-13T08:54:00.000000"
+    }
+  ],
+  "acceptance_criteria": [
+    {
+      "ac_id": "ac_001",
+      "statement": "Login hoạt động trên Chrome (latest version)",
+      "given": "User sử dụng Chrome browser latest version",
+      "when": "User thực hiện login flow",
+      "then": "Tất cả chức năng login hoạt động bình thường",
+      "source_doc_id": "qa_upload_9_k65ki0_md",
+      "source_node_id": "sec_001_004",
+      "status": "active"
+    },
+    {
+      "ac_id": "ac_002",
+      "statement": "Login hoạt động trên Firefox, Safari, Edge (latest versions)",
+      "given": "User sử dụng Firefox/Safari/Edge latest version",
+      "when": "User thực hiện login flow",
+      "then": "Tất cả chức năng login hoạt động bình thường trên từng browser",
+      "source_doc_id": "qa_upload_9_k65ki0_md",
+      "source_node_id": "sec_001_004",
+      "status": "active"
+    }
+  ],
+  "business_rules": [
+    {
+      "rule_id": "BR001",
+      "description": "Hỗ trợ Chrome, Firefox, Safari, Edge — latest 2 major versions"
+    }
+  ],
+  "gap_notes": [
+    {
+      "type": "incomplete_specification",
+      "description": "Không nói rõ 'latest versions' là 1 hay 2 major versions",
+      "severity": "low"
+    }
+  ],
+  "non_functional_requirements": [
+    {
+      "nfr_id": "NFR001",
+      "category": "compatibility",
+      "description": "Responsive design — login form hiển thị đúng trên mobile browsers",
+      "status": "active",
+      "source_doc_id": "qa_upload_9_k65ki0_md",
+      "source_node_id": "sec_001_004"
+    }
+  ],
+  "feature_id": "feat_005",
+  "project_id": "app_login",
+  "created_at": "2026-09-13T09:00:42.918289",
+  "updated_at": "2026-09-13T09:00:42.918289",
+  "doc_id": "qa_upload_9_k65ki0_md",
+  "conflict_log": [],
+  "content_hash": "44a899d62b6994fb0389e8d0800d34c1d008a6b653f466a959f6e23aaf14afc9",
+  "generation": 1
+}

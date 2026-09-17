@@ -1,0 +1,89 @@
+{
+  "title": "Hiển thị form đăng nhập với đầy đủ các thành phần",
+  "description": "Verify trang /login hiển thị đúng email field, password field (masked), Login button và Forgot Password link. Happy path cho UI rendering của login form.",
+  "type": "ui",
+  "priority": "p0",
+  "status": "active",
+  "layer": "ui",
+  "preconditions": [
+    "Người dùng chưa đăng nhập",
+    "Hệ thống đang hoạt động bình thường"
+  ],
+  "test_data": "URL: /login",
+  "steps": [
+    {
+      "step_number": 1,
+      "action": "Navigate to /login page using browser",
+      "expected": "Trang login hiển thị thành công, không có lỗi"
+    },
+    {
+      "step_number": 2,
+      "action": "Kiểm tra sự tồn tại của email input field",
+      "expected": "Email input field hiển thị với type='email' hoặc placeholder phù hợp"
+    },
+    {
+      "step_number": 3,
+      "action": "Kiểm tra sự tồn tại của password input field",
+      "expected": "Password input field hiển thị với type='password' (giá trị bị che dấu bởi asterisks)"
+    },
+    {
+      "step_number": 4,
+      "action": "Kiểm tra nút 'Login'",
+      "expected": "Nút 'Login' hiển thị và có thể click"
+    },
+    {
+      "step_number": 5,
+      "action": "Kiểm tra link 'Forgot Password'",
+      "expected": "Link 'Forgot Password' hiển thị và có thể click"
+    }
+  ],
+  "expected_result": "Trang login hiển thị đầy đủ 4 thành phần: email input, password input (masked), Login button, Forgot Password link",
+  "covers": [
+    {
+      "feature_id": "feat_001",
+      "ac_id": "ac_001",
+      "coverage_type": "happy"
+    }
+  ],
+  "tags": [
+    "login",
+    "ui",
+    "smoke",
+    "regression"
+  ],
+  "estimated_duration": 2,
+  "created_at": "2026-09-13T09:00:00",
+  "automation_feasibility": {
+    "automatable": true,
+    "automation_tools": [
+      "playwright"
+    ],
+    "automation_challenges": []
+  },
+  "testcase_id": "tc_001",
+  "feature_id": "feat_001",
+  "project_id": "app_login",
+  "updated_at": "2026-09-13T12:10:29.434046",
+  "content_updated_at": "2026-09-13T09:02:33.111710",
+  "created_by": "create",
+  "updated_by": "rest_api_session",
+  "content_hash": "7842a80325161adf3b9a34f8a515de55db15a6167cc5f4647298fc8681f7d54e",
+  "schema_version": "3.0.0",
+  "generation": 2,
+  "metadata": {
+    "test_result_2": "Pass",
+    "last_run": {
+      "run_id": "manual_1789276229",
+      "overallStatus": "pass",
+      "status": "pass",
+      "timestamp": "2026-09-13T12:10:29.431454",
+      "duration_ms": null,
+      "browser": "manual",
+      "environment": null,
+      "steps_log": [],
+      "error": null,
+      "note": null
+    }
+  },
+  "test_result_2": "pass"
+}

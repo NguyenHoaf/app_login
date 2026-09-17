@@ -1,0 +1,68 @@
+{
+  "title": "NFR — Audit log ghi lại mọi lần đăng nhập",
+  "description": "Verify audit log ghi nhận login thành công và thất bại với đầy đủ thông tin.",
+  "type": "functional",
+  "priority": "p1",
+  "status": "active",
+  "layer": "api",
+  "preconditions": [
+    "User có account active",
+    "Audit log system active"
+  ],
+  "test_data": "Email: test@example.com, Password: SecurePass123!",
+  "steps": [
+    {
+      "step_number": 1,
+      "action": "Login thành công",
+      "expected": "Redirect /dashboard"
+    },
+    {
+      "step_number": 2,
+      "action": "Kiểm tra audit log",
+      "expected": "Entry: event=login_success, user, timestamp, IP, user_agent"
+    },
+    {
+      "step_number": 3,
+      "action": "Login sai password 1 lần",
+      "expected": "Error message hiển thị"
+    },
+    {
+      "step_number": 4,
+      "action": "Kiểm tra audit log cho fail",
+      "expected": "Entry: event=login_failed, reason=wrong_password, timestamp, IP"
+    }
+  ],
+  "expected_result": "Audit log ghi nhận cả login success và failed",
+  "covers": [
+    {
+      "feature_id": "feat_002",
+      "nfr_id": "NFR002",
+      "coverage_type": "nfr"
+    }
+  ],
+  "tags": [
+    "authentication",
+    "audit",
+    "nfr",
+    "security"
+  ],
+  "estimated_duration": 3,
+  "created_at": "2026-09-13T09:02:00",
+  "automation_feasibility": {
+    "automatable": true,
+    "automation_tools": [
+      "playwright"
+    ],
+    "automation_challenges": []
+  },
+  "testcase_id": "tc_020",
+  "feature_id": "feat_002",
+  "project_id": "app_login",
+  "updated_at": "2026-09-13T09:05:10.706613",
+  "content_updated_at": "2026-09-13T09:05:10.706613",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "ca2991ee09416869684ac3fa325e5a8020a95d6ec96172b0c6a19e5e3c7ae70e",
+  "schema_version": "3.0.0",
+  "generation": 1
+}

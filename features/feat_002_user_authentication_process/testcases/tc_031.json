@@ -1,0 +1,70 @@
+{
+  "testcase_id": "tc_031",
+  "feature_id": "feat_002",
+  "project_id": "app_login",
+  "title": "ĐĂNG NHẬP — account locked → từ chối với lock message",
+  "description": "Verify account bị lock (sau 5 lần sai) không thể đăng nhập dù đúng password. Error message phải là lock message, không phải incorrect password.",
+  "type": "functional",
+  "priority": "p0",
+  "status": "active",
+  "layer": "e2e",
+  "preconditions": [
+    "User đã bị lock (failed_attempts >= 5)",
+    "User đang ở trang /login"
+  ],
+  "test_data": "Email: lockeduser@example.com, Password: bất kỳ (đúng hoặc sai)",
+  "steps": [
+    {
+      "step_number": 1,
+      "action": "Navigate to /login page",
+      "expected": "Login form hiển thị"
+    },
+    {
+      "step_number": 2,
+      "action": "Nhập email 'lockeduser@example.com' và password bất kỳ",
+      "expected": "Input accepted"
+    },
+    {
+      "step_number": 3,
+      "action": "Click 'Login'",
+      "expected": "Hiển thị 'Your account has been locked. Please contact support' — không phải 'Incorrect password'"
+    },
+    {
+      "step_number": 4,
+      "action": "Verify không tăng failed_attempts",
+      "expected": "failed_attempts không thay đổi (hệ thống từ chối ngay, không đếm thêm)"
+    }
+  ],
+  "expected_result": "Account locked → mọi login attempt đều bị từ chối với lock message, không tăng failed_attempts.",
+  "covers": [
+    {
+      "feature_id": "feat_002",
+      "ac_id": "ac_004",
+      "coverage_type": "negative"
+    }
+  ],
+  "tags": [
+    "authentication",
+    "login",
+    "lockout",
+    "negative"
+  ],
+  "estimated_duration": 2,
+  "created_at": "2026-09-13T14:00:00Z",
+  "automation_feasibility": {
+    "automatable": true,
+    "automation_tools": [
+      "playwright"
+    ],
+    "automation_challenges": [
+      "Cần seed data với account locked hoặc simulate 5 lần fail trước"
+    ]
+  },
+  "updated_at": "2026-09-13T21:29:41.811102",
+  "content_updated_at": "2026-09-13T21:29:41.811102",
+  "created_by": "create",
+  "updated_by": "",
+  "content_hash": "3f44882b3f0ef22c42ffcc3dd9ec5432044f11a257afc5327f6bfef99d10100b",
+  "schema_version": "3.0.0",
+  "generation": 3
+}

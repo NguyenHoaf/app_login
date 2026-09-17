@@ -1,0 +1,62 @@
+{
+  "title": "VER2: Password dưới 10 ký tự — validation fail (boundary)",
+  "description": "Verify password 9 ký tự bị reject, 10 ký tự được accept (policy updated min từ 8 lên 10).",
+  "type": "functional",
+  "priority": "p1",
+  "status": "active",
+  "layer": "e2e",
+  "preconditions": [
+    "Trang /login đã load"
+  ],
+  "test_data": "Password 9: 'Pass123!a', Password 10: 'Pass123!ab'",
+  "steps": [
+    {
+      "step_number": 1,
+      "action": "Navigate to /login page",
+      "expected": "Login form hiển thị"
+    },
+    {
+      "step_number": 2,
+      "action": "Nhập email hợp lệ + password 9 ký tự 'Pass123!a', click Login",
+      "expected": "Password bị reject vì < 10 characters"
+    },
+    {
+      "step_number": 3,
+      "action": "Nhập email + password 10 ký tự 'Pass123!ab', click Login",
+      "expected": "Password được accept (pass length validation)"
+    }
+  ],
+  "expected_result": "Boundary: 9 reject, 10 accept",
+  "covers": [
+    {
+      "feature_id": "feat_003",
+      "ac_id": "ac_003",
+      "coverage_type": "boundary"
+    }
+  ],
+  "tags": [
+    "validation",
+    "password",
+    "boundary",
+    "v2_update"
+  ],
+  "estimated_duration": 3,
+  "created_at": "2026-09-13T09:02:00",
+  "automation_feasibility": {
+    "automatable": true,
+    "automation_tools": [
+      "playwright"
+    ],
+    "automation_challenges": []
+  },
+  "testcase_id": "tc_023",
+  "feature_id": "feat_003",
+  "project_id": "app_login",
+  "updated_at": "2026-09-13T09:05:19.131906",
+  "content_updated_at": "2026-09-13T09:05:19.131906",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "0911c574542d4ab15b43dd85162b2502c8c47fe018945ed127fdf51f896e44fb",
+  "schema_version": "3.0.0",
+  "generation": 1
+}

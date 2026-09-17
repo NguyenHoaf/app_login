@@ -1,0 +1,62 @@
+{
+  "title": "Password field hiển thị dạng masked (không hiển thị plain text)",
+  "description": "Verify rằng password input field sử dụng type=password để che dấu ký tự người dùng nhập, hiển thị asterisks/dots thay vì plain text.",
+  "type": "ui",
+  "priority": "p0",
+  "status": "active",
+  "layer": "ui",
+  "preconditions": [
+    "Người dùng đang ở trang /login"
+  ],
+  "test_data": "Password: TestPass123!",
+  "steps": [
+    {
+      "step_number": 1,
+      "action": "Navigate to /login page",
+      "expected": "Login form hiển thị"
+    },
+    {
+      "step_number": 2,
+      "action": "Nhập password 'TestPass123!' vào password field",
+      "expected": "Các ký tự hiển thị dưới dạng dấu chấm hoặc asterisks, không hiển thị plain text"
+    },
+    {
+      "step_number": 3,
+      "action": "Kiểm tra HTML attribute type của password input",
+      "expected": "Input field có type='password'"
+    }
+  ],
+  "expected_result": "Password field hiển thị masked, không lộ plain text",
+  "covers": [
+    {
+      "feature_id": "feat_001",
+      "ac_id": "ac_001",
+      "coverage_type": "happy"
+    }
+  ],
+  "tags": [
+    "login",
+    "ui",
+    "security",
+    "masked"
+  ],
+  "estimated_duration": 2,
+  "created_at": "2026-09-13T09:00:00",
+  "automation_feasibility": {
+    "automatable": true,
+    "automation_tools": [
+      "playwright"
+    ],
+    "automation_challenges": []
+  },
+  "testcase_id": "tc_003",
+  "feature_id": "feat_001",
+  "project_id": "app_login",
+  "updated_at": "2026-09-13T09:02:33.111710",
+  "content_updated_at": "2026-09-13T09:02:33.111710",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "29572f04c46f28f6e61325d6d508d920c269531c0f1fa723df48cb6d5a0fd9dc",
+  "schema_version": "3.0.0",
+  "generation": 1
+}

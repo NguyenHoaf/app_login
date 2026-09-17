@@ -1,0 +1,82 @@
+{
+  "testcase_id": "tc_034",
+  "feature_id": "feat_002",
+  "project_id": "app_login",
+  "title": "ĐĂNG NHẬP — sai password lần thứ 5 → account bị lock ngay",
+  "description": "Verify đúng lần fail thứ 5, account bị lock ngay lập tức. Lock message thay vì incorrect password.",
+  "type": "functional",
+  "priority": "p0",
+  "status": "active",
+  "layer": "e2e",
+  "preconditions": [
+    "User có account active: email=user@example.com",
+    "User đã fail 4 lần (failed_attempts=4)",
+    "Đang ở trang /login"
+  ],
+  "test_data": "Email: user@example.com, Password: WrongPass5! (sai lần thứ 5)",
+  "steps": [
+    {
+      "step_number": 1,
+      "action": "Navigate to /login page",
+      "expected": "Login form hiển thị"
+    },
+    {
+      "step_number": 2,
+      "action": "Nhập email 'user@example.com' và password 'WrongPass5!'",
+      "expected": "Input accepted"
+    },
+    {
+      "step_number": 3,
+      "action": "Click 'Login'",
+      "expected": "Hệ thống gọi API POST /api/login"
+    },
+    {
+      "step_number": 4,
+      "action": "Verify lock message",
+      "expected": "Hiển thị 'Your account has been locked. Please contact support'. Không hiển thị 'Incorrect password'."
+    },
+    {
+      "step_number": 5,
+      "action": "Verify trạng thái account",
+      "expected": "Account bị lock. failed_attempts reset hoặc set thành locked. Không thể login dù với password đúng."
+    }
+  ],
+  "expected_result": "Sai password lần thứ 5 → account locked ngay, lock message, không thể login tiếp.",
+  "covers": [
+    {
+      "feature_id": "feat_002",
+      "ac_id": "ac_003",
+      "coverage_type": "boundary"
+    },
+    {
+      "feature_id": "feat_002",
+      "ac_id": "ac_004",
+      "coverage_type": "negative"
+    }
+  ],
+  "tags": [
+    "authentication",
+    "login",
+    "negative",
+    "boundary",
+    "lockout"
+  ],
+  "estimated_duration": 3,
+  "created_at": "2026-09-13T14:00:00Z",
+  "automation_feasibility": {
+    "automatable": true,
+    "automation_tools": [
+      "playwright"
+    ],
+    "automation_challenges": [
+      "Cần simulate 4 lần fail trước"
+    ]
+  },
+  "updated_at": "2026-09-13T16:46:23.260279",
+  "content_updated_at": "2026-09-13T16:46:23.260279",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "47761d9306bb5340386aa36044ca85cdc8890ed3f893168e1e1a22f20fe84690",
+  "schema_version": "3.0.0",
+  "generation": 1
+}

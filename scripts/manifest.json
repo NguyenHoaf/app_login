@@ -1,0 +1,221 @@
+{
+  "version": "2.0.0",
+  "updated_at": "2026-09-13T12:00:00",
+  "architecture": "pom_pytest_playwright",
+  "entries": {
+    "tc_011": {
+      "testcase_id": "tc_011",
+      "feature_id": "feat_002",
+      "filename": "tests/feat_002_user_authentication/test_tc_011.py",
+      "script_type": "playwright_pom",
+      "generated_at": "2026-09-13T12:00:00",
+      "last_verified_status": "pass"
+    },
+    "tc_012": {
+      "testcase_id": "tc_012",
+      "feature_id": "feat_002",
+      "filename": "tests/feat_002_user_authentication/test_tc_012.py",
+      "script_type": "playwright_pom",
+      "generated_at": "2026-09-13T12:00:00",
+      "last_verified_status": "pass"
+    },
+    "tc_013": {
+      "testcase_id": "tc_013",
+      "feature_id": "feat_002",
+      "filename": "tests/feat_002_user_authentication/test_tc_013_wrong_password.py",
+      "script_type": "playwright_pom",
+      "generated_at": "2026-09-13T12:00:00"
+    },
+    "tc_014": {
+      "testcase_id": "tc_014",
+      "feature_id": "feat_002",
+      "filename": "tests/feat_002_user_authentication/test_tc_014_locked_account.py",
+      "script_type": "playwright_pom",
+      "generated_at": "2026-09-13T12:00:00",
+      "note": "Bug-finding mode: FAIL nếu account locking không enforce"
+    },
+    "tc_015": {
+      "testcase_id": "tc_015",
+      "feature_id": "feat_002",
+      "filename": "tests/feat_002_user_authentication/test_tc_015_server_error.py",
+      "script_type": "playwright_pom_gap",
+      "generated_at": "2026-09-13T12:00:00",
+      "note": "Dùng route intercept để simulate server error — detect graceful handling"
+    },
+    "tc_016": {
+      "testcase_id": "tc_016",
+      "feature_id": "feat_002",
+      "filename": "tests/feat_002_user_authentication/test_tc_016_boundary_lockout.py",
+      "script_type": "playwright_pom_gap",
+      "generated_at": "2026-09-13T12:00:00",
+      "note": "Bug-finding: 5 lần fail → detect lock, FAIL nếu không lock"
+    },
+    "tc_017": {
+      "testcase_id": "tc_017",
+      "feature_id": "feat_002",
+      "filename": "tests/api/test_tc_017_018_login_api_negative.py",
+      "script_type": "playwright_browser_api",
+      "generated_at": "2026-09-13T12:00:00"
+    },
+    "tc_018": {
+      "testcase_id": "tc_018",
+      "feature_id": "feat_002",
+      "filename": "tests/api/test_tc_017_018_login_api_negative.py",
+      "script_type": "playwright_browser_api",
+      "generated_at": "2026-09-13T12:00:00"
+    },
+    "tc_019": {
+      "testcase_id": "tc_019",
+      "feature_id": "feat_002",
+      "filename": "tests/feat_002_user_authentication/test_tc_019_020_nfr.py",
+      "script_type": "nfr_skip",
+      "generated_at": "2026-09-13T12:00:00",
+      "note": "Đo page load time + full flow — FAIL nếu >3s"
+    },
+    "tc_020": {
+      "testcase_id": "tc_020",
+      "feature_id": "feat_002",
+      "filename": "tests/feat_002_user_authentication/test_tc_019_020_nfr.py",
+      "script_type": "nfr_skip",
+      "generated_at": "2026-09-13T12:00:00",
+      "note": "Probe audit API endpoints — FAIL nếu không implement"
+    },
+    "tc_001": {
+      "testcase_id": "tc_001",
+      "feature_id": "feat_001",
+      "filename": "tests/feat_001_user_login_form/test_tc_001_login_form_layout.py",
+      "script_type": "playwright_pom",
+      "generated_at": "2026-09-13T12:00:00",
+      "last_verified_status": "pass"
+    },
+    "tc_002": {
+      "testcase_id": "tc_002",
+      "feature_id": "feat_001",
+      "filename": "tests/feat_001_user_login_form/test_tc_002_forgot_password_redirect.py",
+      "script_type": "playwright_pom_gap",
+      "generated_at": "2026-09-13T12:00:00",
+      "note": "Sẽ FAIL nếu link không tồn tại — bug detection mode"
+    },
+    "tc_003": {
+      "testcase_id": "tc_003",
+      "feature_id": "feat_001",
+      "filename": "tests/feat_001_user_login_form/test_tc_003_password_masked.py",
+      "script_type": "playwright_pom",
+      "generated_at": "2026-09-13T12:00:00",
+      "last_verified_status": "pass"
+    },
+    "tc_004": {
+      "testcase_id": "tc_004",
+      "feature_id": "feat_001",
+      "filename": "tests/feat_001_user_login_form/test_tc_004_email_format_acceptance.py",
+      "script_type": "playwright_pom",
+      "generated_at": "2026-09-13T12:00:00",
+      "last_verified_status": "pass"
+    },
+    "tc_005": {
+      "testcase_id": "tc_005",
+      "feature_id": "feat_001",
+      "filename": "tests/feat_001_user_login_form/test_tc_005_006_required_fields.py",
+      "script_type": "playwright_pom",
+      "generated_at": "2026-09-13T12:00:00",
+      "last_verified_status": "pass"
+    },
+    "tc_006": {
+      "testcase_id": "tc_006",
+      "feature_id": "feat_001",
+      "filename": "tests/feat_001_user_login_form/test_tc_005_006_required_fields.py",
+      "script_type": "playwright_pom",
+      "generated_at": "2026-09-13T12:00:00",
+      "last_verified_status": "pass"
+    },
+    "tc_007": {
+      "testcase_id": "tc_007",
+      "feature_id": "feat_001",
+      "filename": "tests/feat_001_user_login_form/test_tc_007_008_security_injection.py",
+      "script_type": "playwright_pom",
+      "generated_at": "2026-09-13T12:00:00",
+      "last_verified_status": "pass"
+    },
+    "tc_008": {
+      "testcase_id": "tc_008",
+      "feature_id": "feat_001",
+      "filename": "tests/feat_001_user_login_form/test_tc_007_008_security_injection.py",
+      "script_type": "playwright_pom",
+      "generated_at": "2026-09-13T12:00:00",
+      "last_verified_status": "pass"
+    },
+    "tc_009": {
+      "testcase_id": "tc_009",
+      "feature_id": "feat_001",
+      "filename": "tests/api/test_tc_009_login_api.py",
+      "script_type": "playwright_browser_api",
+      "generated_at": "2026-09-13T12:00:00",
+      "last_verified_status": "pass"
+    },
+    "tc_010": {
+      "testcase_id": "tc_010",
+      "feature_id": "feat_001",
+      "filename": "tests/feat_001_user_login_form/test_tc_001_login_form_layout.py",
+      "script_type": "nfr_skip",
+      "generated_at": "2026-09-13T12:00:00",
+      "note": "NFR perf — page load time measured in test_tc_009_api"
+    },
+    "tc_021": {
+      "testcase_id": "tc_021",
+      "feature_id": "feat_003",
+      "filename": "tests/feat_003_input_validation/test_tc_021_022_email_validation.py",
+      "script_type": "playwright_pom",
+      "generated_at": "2026-09-13T12:00:00",
+      "last_verified_status": "pass"
+    },
+    "tc_022": {
+      "testcase_id": "tc_022",
+      "feature_id": "feat_003",
+      "filename": "tests/feat_003_input_validation/test_tc_021_022_email_validation.py",
+      "script_type": "playwright_pom_gap",
+      "generated_at": "2026-09-13T12:00:00",
+      "note": "Bug-finding: 256 chars → FAIL nếu field accept (no maxlength)"
+    },
+    "tc_023": {
+      "testcase_id": "tc_023",
+      "feature_id": "feat_003",
+      "filename": "tests/feat_003_input_validation/test_tc_023_024_password_length.py",
+      "script_type": "playwright_pom",
+      "generated_at": "2026-09-13T12:00:00",
+      "last_verified_status": "pass"
+    },
+    "tc_024": {
+      "testcase_id": "tc_024",
+      "feature_id": "feat_003",
+      "filename": "tests/feat_003_input_validation/test_tc_023_024_password_length.py",
+      "script_type": "playwright_pom_gap",
+      "generated_at": "2026-09-13T12:00:00",
+      "note": "Bug-finding: 33 chars → FAIL nếu field accept"
+    },
+    "tc_025": {
+      "testcase_id": "tc_025",
+      "feature_id": "feat_003",
+      "filename": "tests/feat_003_input_validation/test_tc_025_026_password_format.py",
+      "script_type": "playwright_pom",
+      "generated_at": "2026-09-13T12:00:00",
+      "last_verified_status": "pass"
+    },
+    "tc_026": {
+      "testcase_id": "tc_026",
+      "feature_id": "feat_003",
+      "filename": "tests/feat_003_input_validation/test_tc_025_026_password_format.py",
+      "script_type": "playwright_pom",
+      "generated_at": "2026-09-13T12:00:00",
+      "last_verified_status": "pass"
+    },
+    "tc_027": {
+      "testcase_id": "tc_027",
+      "feature_id": "feat_003",
+      "filename": "tests/api/test_tc_027_api_required_fields.py",
+      "script_type": "api_requests",
+      "generated_at": "2026-09-13T12:00:00",
+      "last_verified_status": "pass",
+      "note": "Uses requests library directly (no ModSecurity issue for POST)"
+    }
+  }
+}

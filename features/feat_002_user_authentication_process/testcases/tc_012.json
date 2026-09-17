@@ -1,0 +1,124 @@
+{
+  "title": "Đăng nhập với email không tồn tại trong hệ thống",
+  "description": "Verify khi user nhập email chưa đăng ký, hệ thống hiển thị 'No account found with this email'.",
+  "type": "e2e",
+  "priority": "p0",
+  "status": "active",
+  "layer": "e2e",
+  "preconditions": [
+    "Trang /login đã load"
+  ],
+  "test_data": "Email: nonexistent@unknown.com, Password: TestPass123!",
+  "steps": [
+    {
+      "step_number": 1,
+      "action": "Navigate to /login page",
+      "expected": "Login form hiển thị"
+    },
+    {
+      "step_number": 2,
+      "action": "Nhập email 'nonexistent@unknown.com' và password 'TestPass123!'",
+      "expected": "Input fields accept values"
+    },
+    {
+      "step_number": 3,
+      "action": "Click 'Login' button",
+      "expected": "Hệ thống kiểm tra account → không tìm thấy → hiển thị 'No account found with this email'"
+    }
+  ],
+  "expected_result": "Error message 'No account found with this email' hiển thị, không redirect",
+  "covers": [
+    {
+      "feature_id": "feat_002",
+      "ac_id": "ac_002",
+      "coverage_type": "negative"
+    }
+  ],
+  "tags": [
+    "authentication",
+    "negative",
+    "error_message"
+  ],
+  "estimated_duration": 2,
+  "created_at": "2026-09-13T09:02:00",
+  "automation_feasibility": {
+    "automatable": true,
+    "automation_tools": [
+      "playwright"
+    ],
+    "automation_challenges": []
+  },
+  "testcase_id": "tc_012",
+  "feature_id": "feat_002",
+  "project_id": "app_login",
+  "updated_at": "2026-09-13T11:15:47.318967",
+  "content_updated_at": "2026-09-13T09:05:10.706613",
+  "created_by": "create",
+  "updated_by": "",
+  "content_hash": "5f10623678654822abc4c1aeccd90f08501511f5d9d0cf640d50669154b15c82",
+  "schema_version": "3.0.0",
+  "generation": 4,
+  "test_result_2": "pass",
+  "metadata.last_run": {
+    "timestamp": "2026-09-13T18:06:00+07:00",
+    "overallStatus": "pass",
+    "steps": [
+      {
+        "step": 1,
+        "status": "pass",
+        "detail": "Navigated to /login page — login form displayed"
+      },
+      {
+        "step": 2,
+        "status": "pass",
+        "detail": "Filled username 'nonexistent@unknown.com' and password 'TestPass123!'"
+      },
+      {
+        "step": 3,
+        "status": "pass",
+        "detail": "Clicked Submit — error message 'Your username is invalid!' displayed, no redirect"
+      }
+    ],
+    "environment": "https://practicetestautomation.com/practice-test-login/",
+    "browser": "chromium"
+  },
+  "metadata": {
+    "test_result_2": "Pass",
+    "last_run": {
+      "run_id": "run_1726230000",
+      "overallStatus": "pass",
+      "status": "pass",
+      "timestamp": "2026-09-13T18:06:00+07:00",
+      "duration_ms": null,
+      "browser": "chromium",
+      "environment": "https://practicetestautomation.com/practice-test-login/",
+      "steps_log": [
+        {
+          "step": 1,
+          "status": "pass",
+          "actual": "Navigated to /login page — login form displayed"
+        },
+        {
+          "step": 2,
+          "status": "pass",
+          "actual": "Filled username 'nonexistent@unknown.com' and password 'TestPass123!'"
+        },
+        {
+          "step": 3,
+          "status": "pass",
+          "actual": "Clicked Submit — error 'Your username is invalid!' displayed, no redirect"
+        }
+      ],
+      "error": null,
+      "note": null
+    },
+    "script": {
+      "filename": "tests/feat_002_user_authentication_process/test_tc_012.py",
+      "generated_at": "2026-09-13T11:15:32",
+      "generated_from_tc_content_updated_at": "2026-09-13T09:05:10.706613",
+      "last_verified_at": "2026-09-13T11:16:00",
+      "last_verified_status": "pass",
+      "last_error": null
+    }
+  }
+}

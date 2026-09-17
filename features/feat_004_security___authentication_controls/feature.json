@@ -1,0 +1,253 @@
+{
+  "name": "Security & Authentication Controls",
+  "description": "Quản lý bảo mật, session và xác thực hai yếu tố (2FA) cho tính năng đăng nhập.\n\n## Security Requirements\n1. Password transmission over HTTPS only\n2. Maximum 5 failed login attempts → lock account 30 minutes\n3. Session timeout sau 2 giờ inactivity\n4. JWT token cho session management\n\n## 2FA Main Flow\n1. User enable 2FA từ settings\n2. Chọn phương thức: SMS hoặc Authenticator App\n3. Xác thực OTP lần đầu để kích hoạt\n4. Login flow mở rộng: email+password đúng → nhập OTP\n5. OTP verified → login thành công\n\n## Edge Cases\n- SQL injection attempts trong email field\n- XSS attempts trong input fields\n- Concurrent login attempts từ cùng account",
+  "category": "security",
+  "priority": "critical",
+  "sources": [
+    {
+      "doc_id": "qa_upload_9_k65ki0_md",
+      "doc_version": 1,
+      "role": "primary",
+      "source_locators": [
+        "Section 2.5 Security Requirements",
+        "Section 3. Edge Cases",
+        "Section 5. Two-Factor Authentication"
+      ],
+      "extracted_at": "2026-09-13T08:54:00.000000"
+    }
+  ],
+  "acceptance_criteria": [
+    {
+      "ac_id": "ac_001",
+      "statement": "Tất cả login requests phải qua HTTPS — không cho phép HTTP",
+      "given": "Hệ thống đã cấu hình HTTPS",
+      "when": "User gửi login request qua HTTP (không SSL)",
+      "then": "Hệ thống từ chối request HTTP, yêu cầu HTTPS hoặc tự động redirect",
+      "source_doc_id": "qa_upload_9_k65ki0_md",
+      "source_node_id": "sec_001_002_005",
+      "status": "active"
+    },
+    {
+      "ac_id": "ac_002",
+      "statement": "5 lần login fail liên tiếp → account bị lock 30 phút",
+      "given": "Account chưa bị lock, failed_attempts < 5",
+      "when": "User nhập sai password đến lần thứ 5 liên tiếp",
+      "then": "Hệ thống lock account 30 phút, hiển thị 'Your account has been locked'. Mọi login attempt bị từ chối.",
+      "boundaries": [
+        {
+          "dimension": "count",
+          "value": 5
+        },
+        {
+          "dimension": "timeout_ms",
+          "value": 1800000
+        }
+      ],
+      "source_doc_id": "qa_upload_9_k65ki0_md",
+      "source_node_id": "sec_001_002_005",
+      "status": "active"
+    },
+    {
+      "ac_id": "ac_003",
+      "statement": "Session timeout sau 2 giờ inactivity → yêu cầu đăng nhập lại",
+      "given": "User đã đăng nhập thành công, có session active",
+      "when": "User không tương tác với hệ thống trong 2 giờ",
+      "then": "Session JWT token hết hạn. User bị redirect về /login hoặc nhận 401.",
+      "boundaries": [
+        {
+          "dimension": "timeout_ms",
+          "value": 7200000
+        }
+      ],
+      "source_doc_id": "qa_upload_9_k65ki0_md",
+      "source_node_id": "sec_001_002_005",
+      "status": "active"
+    },
+    {
+      "ac_id": "ac_004",
+      "statement": "SQL injection attempt bị chặn",
+      "given": "Người dùng ở trang /login",
+      "when": "User nhập SQL injection payload vào email field",
+      "then": "Hệ thống sanitize input (parameterized query) → không bị injection",
+      "source_doc_id": "qa_upload_9_k65ki0_md",
+      "source_node_id": "sec_001_003",
+      "status": "active"
+    },
+    {
+      "ac_id": "ac_005",
+      "statement": "XSS attempt trong input fields bị sanitized",
+      "given": "Người dùng ở trang /login",
+      "when": "User nhập XSS payload và submit",
+      "then": "Hệ thống sanitize/encode input. Script không được thực thi.",
+      "source_doc_id": "qa_upload_9_k65ki0_md",
+      "source_node_id": "sec_001_003",
+      "status": "active"
+    },
+    {
+      "ac_id": "ac_006",
+      "statement": "User có thể enable 2FA từ settings",
+      "given": "User đã đăng nhập, ở trang account settings",
+      "when": "User chọn enable 2FA và chọn phương thức",
+      "then": "Hệ thống kích hoạt 2FA, yêu cầu user xác thực OTP lần đầu. Sau đó 2FA được bật.",
+      "source_doc_id": "qa_upload_9_k65ki0_md",
+      "source_node_id": "sec_001_005",
+      "status": "active"
+    },
+    {
+      "ac_id": "ac_007",
+      "statement": "Login với 2FA enabled → sau email+password đúng, yêu cầu nhập OTP",
+      "given": "User có 2FA enabled, đã nhập email + password đúng",
+      "when": "User được redirect đến trang OTP verification",
+      "then": "Hiển thị OTP input. Chỉ khi OTP đúng mới login thành công và redirect dashboard.",
+      "source_doc_id": "qa_upload_9_k65ki0_md",
+      "source_node_id": "sec_001_005",
+      "status": "active"
+    },
+    {
+      "ac_id": "ac_008",
+      "statement": "Hỗ trợ SMS làm phương thức 2FA",
+      "given": "User đang setup 2FA",
+      "when": "User chọn SMS method",
+      "then": "Hệ thống gửi OTP qua SMS",
+      "source_doc_id": "qa_upload_9_k65ki0_md",
+      "source_node_id": "sec_001_005",
+      "status": "active"
+    },
+    {
+      "ac_id": "ac_009",
+      "statement": "Hỗ trợ Authenticator App làm phương thức 2FA",
+      "given": "User đang setup 2FA",
+      "when": "User chọn Authenticator App method",
+      "then": "Hệ thống hiển thị QR code để user scan. User nhập OTP từ app để verify.",
+      "source_doc_id": "qa_upload_9_k65ki0_md",
+      "source_node_id": "sec_001_005",
+      "status": "active"
+    }
+  ],
+  "business_rules": [
+    {
+      "rule_id": "BR001",
+      "description": "Mọi password transmission phải qua HTTPS"
+    },
+    {
+      "rule_id": "BR002",
+      "description": "Maximum 5 failed login attempts → lock account 30 minutes"
+    },
+    {
+      "rule_id": "BR003",
+      "description": "Session timeout sau 2 giờ inactivity"
+    },
+    {
+      "rule_id": "BR004",
+      "description": "JWT token cho session management"
+    },
+    {
+      "rule_id": "BR005",
+      "description": "Input fields phải được sanitize chống SQL injection và XSS"
+    },
+    {
+      "rule_id": "BR006",
+      "description": "2FA hỗ trợ 2 phương thức: SMS và Authenticator App"
+    },
+    {
+      "rule_id": "BR007",
+      "description": "2FA flow: username/password step 1 → OTP step 2"
+    }
+  ],
+  "gap_notes": [
+    {
+      "type": "incomplete_specification",
+      "description": "Không quy định cơ chế refresh token cho JWT",
+      "severity": "high"
+    },
+    {
+      "type": "incomplete_specification",
+      "description": "Không quy định lockout là per-IP, per-account hay cả hai",
+      "severity": "high"
+    },
+    {
+      "type": "incomplete_specification",
+      "description": "Không quy định concurrent session policy — 1 account login nhiều nơi cùng lúc?",
+      "severity": "high"
+    },
+    {
+      "type": "incomplete_specification",
+      "description": "Không quy định behavior login trong lúc system maintenance",
+      "severity": "medium"
+    },
+    {
+      "type": "incomplete_specification",
+      "description": "Không quy định OTP length và OTP expiration time",
+      "severity": "high"
+    },
+    {
+      "type": "incomplete_specification",
+      "description": "Không quy định max OTP attempts trước khi bị lock",
+      "severity": "high"
+    },
+    {
+      "type": "incomplete_specification",
+      "description": "Không quy định recovery flow khi mất phone/authenticator app (backup codes?)",
+      "severity": "critical"
+    },
+    {
+      "type": "incomplete_specification",
+      "description": "Không quy định user có thể disable 2FA được không và flow disable",
+      "severity": "medium"
+    }
+  ],
+  "technical_notes": {
+    "api_endpoints": [
+      "POST /api/login",
+      "POST /api/2fa/enable",
+      "POST /api/2fa/verify",
+      "POST /api/2fa/disable"
+    ],
+    "complexity_score": 8
+  },
+  "non_functional_requirements": [
+    {
+      "nfr_id": "NFR001",
+      "category": "security",
+      "description": "Password transmission chỉ qua HTTPS",
+      "metric": "HTTPS only",
+      "status": "active",
+      "source_doc_id": "qa_upload_9_k65ki0_md",
+      "source_node_id": "sec_001_002_005"
+    },
+    {
+      "nfr_id": "NFR002",
+      "category": "security",
+      "description": "JWT secret key phải được lưu trữ an toàn, không hard-code",
+      "status": "active",
+      "source_doc_id": "qa_upload_9_k65ki0_md",
+      "source_node_id": "sec_001_002_005"
+    },
+    {
+      "nfr_id": "NFR003",
+      "category": "security",
+      "description": "OTP verification có rate limiting — tối đa 5 lần nhập OTP sai",
+      "metric": "max 5 attempts",
+      "status": "active",
+      "source_doc_id": "qa_upload_9_k65ki0_md",
+      "source_node_id": "sec_001_005"
+    },
+    {
+      "nfr_id": "NFR004",
+      "category": "usability",
+      "description": "SMS OTP phải được gửi trong < 30 giây",
+      "metric": "<30s",
+      "status": "active",
+      "source_doc_id": "qa_upload_9_k65ki0_md",
+      "source_node_id": "sec_001_005"
+    }
+  ],
+  "feature_id": "feat_004",
+  "project_id": "app_login",
+  "created_at": "2026-09-13T09:00:42.918289",
+  "updated_at": "2026-09-13T09:00:42.918289",
+  "doc_id": "qa_upload_9_k65ki0_md",
+  "conflict_log": [],
+  "content_hash": "6cbb5d56cb69c3b94306d55bf71b7c62abc9eda16130a6483bf0bfc363bdd455",
+  "generation": 1
+}

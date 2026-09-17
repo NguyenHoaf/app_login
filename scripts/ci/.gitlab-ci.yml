@@ -1,0 +1,36 @@
+stages:
+  - test
+
+variables:
+  HEADLESS: "true"
+  # SUT credentials — set these in GitLab CI/CD Settings → Variables (masked).
+  # The scripts read them via settings.py / os.environ; never hard-code here.
+  BASE_URL: ""
+  API_ENDPOINT: ""
+
+qa-tests:
+  stage: test
+  image: mcr.microsoft.com/playwright/python:v1.49.0-jammy
+  script:
+    - python -m pip install --upgrade pip
+    - cd scripts
+    # Install the project's actual dependencies (pytest-playwright, pyyaml,
+    # pytest-xdist, pytest-check, ...) — not a hardcoded subset.
+    - pip install -r requirements.txt
+    - mkdir -p reports
+    # Override pytest.ini's `--headed` (CI has no display) and emit JUnit XML
+    # so GitLab renders the Tests tab. -p no:cacheprovider keeps runners clean.
+    - pytest -p no:cacheprovider --headless --override-ini="addopts=" -v --junitxml=reports/junit.xml
+  artifacts:
+    when: always
+    paths:
+      - scripts/reports/
+    reports:
+      junit: scripts/reports/junit.xml
+    expire_in: 2 weeks
+  # Retry once for flaky runner/network issues — does not mask real failures.
+  retry:
+    max: 1
+    when:
+      - runner_system_failure
+      - stuck_or_timeout_failure

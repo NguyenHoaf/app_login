@@ -1,0 +1,1 @@
+"""Utils package — supporting utilities (screenshots, logging, reporting)."""

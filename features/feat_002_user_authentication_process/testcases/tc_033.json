@@ -1,0 +1,58 @@
+{
+  "testcase_id": "tc_033",
+  "feature_id": "feat_002",
+  "project_id": "app_login",
+  "title": "ĐĂNG NHẬP — account locked auto-unlock sau 30 phút",
+  "description": "Verify account locked tự động mở khoá sau đúng 30 phút. Test boundary: tại 29 phút (vẫn locked), tại 31 phút (đã unlock).",
+  "type": "functional",
+  "priority": "p1",
+  "status": "active",
+  "layer": "api",
+  "preconditions": [
+    "User bị lock account (failed_attempts=5 tại thời điểm T0)"
+  ],
+  "test_data": "Email: lockeduser@example.com, Password: CorrectPass123!",
+  "steps": [
+    {
+      "step_number": 1,
+      "action": "Tại T0+29 phút: thử login với email locked + password đúng",
+      "expected": "Hệ thống vẫn từ chối với 'Your account has been locked. Please contact support'"
+    },
+    {
+      "step_number": 2,
+      "action": "Tại T0+31 phút: thử login lại với cùng credentials",
+      "expected": "Hệ thống cho phép login (lock đã hết hạn). User redirect về /dashboard."
+    }
+  ],
+  "expected_result": "Account auto-unlock sau 30 phút. Trước 30 phút: locked. Sau 30 phút: login OK.",
+  "covers": [
+    {
+      "feature_id": "feat_002",
+      "ac_id": "ac_004",
+      "coverage_type": "boundary"
+    }
+  ],
+  "tags": [
+    "authentication",
+    "login",
+    "boundary",
+    "lockout",
+    "timeout"
+  ],
+  "estimated_duration": 35,
+  "created_at": "2026-09-13T14:00:00Z",
+  "automation_feasibility": {
+    "automatable": false,
+    "automation_tools": [],
+    "automation_challenges": [
+      "Cần chờ 30 phút real-time — có thể dùng time-travel mock"
+    ]
+  },
+  "updated_at": "2026-09-13T16:46:23.260279",
+  "content_updated_at": "2026-09-13T16:46:23.260279",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "18ada9ee3e0065fc164c82a3e53542841bc8ba109d59b942965b05a92df565f9",
+  "schema_version": "3.0.0",
+  "generation": 1
+}

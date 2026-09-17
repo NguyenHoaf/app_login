@@ -1,0 +1,121 @@
+{
+  "title": "Đăng nhập thành công với email và password hợp lệ",
+  "description": "Verify user đăng nhập thành công với email và password đúng, redirect về dashboard, JWT session.",
+  "type": "e2e",
+  "priority": "p0",
+  "status": "active",
+  "layer": "e2e",
+  "preconditions": [
+    "User có account active",
+    "Trang /login đã load",
+    "Server hoạt động"
+  ],
+  "test_data": "Email: testuser@example.com, Password: SecurePass123!",
+  "steps": [
+    {
+      "step_number": 1,
+      "action": "Navigate to /login page",
+      "expected": "Login form hiển thị"
+    },
+    {
+      "step_number": 2,
+      "action": "Nhập email 'testuser@example.com' và password 'SecurePass123!'",
+      "expected": "Input fields accept values"
+    },
+    {
+      "step_number": 3,
+      "action": "Click 'Login' button",
+      "expected": "Hệ thống xử lý: validate email → check account → verify password hash"
+    },
+    {
+      "step_number": 4,
+      "action": "Verify redirect và session",
+      "expected": "Redirect về /dashboard, JWT token được tạo và set"
+    }
+  ],
+  "expected_result": "User đăng nhập thành công, redirect /dashboard, JWT session active",
+  "covers": [
+    {
+      "feature_id": "feat_002",
+      "ac_id": "ac_001",
+      "coverage_type": "happy"
+    }
+  ],
+  "tags": [
+    "authentication",
+    "login",
+    "smoke",
+    "regression"
+  ],
+  "estimated_duration": 3,
+  "created_at": "2026-09-13T09:02:00",
+  "automation_feasibility": {
+    "automatable": true,
+    "automation_tools": [
+      "playwright"
+    ],
+    "automation_challenges": []
+  },
+  "testcase_id": "tc_011",
+  "feature_id": "feat_002",
+  "project_id": "app_login",
+  "updated_at": "2026-09-13T10:38:16.677647",
+  "content_updated_at": "2026-09-13T09:05:10.706613",
+  "created_by": "create",
+  "updated_by": "",
+  "content_hash": "7290bd3b65f1d13d07d6c36c0c06372cfa5673eaf7fc94493295db91f652fbab",
+  "schema_version": "3.0.0",
+  "generation": 3,
+  "metadata": {
+    "last_run": {
+      "timestamp": "2026-09-13T09:22:00",
+      "overallStatus": "pass",
+      "steps": [
+        {
+          "step": 1,
+          "status": "pass",
+          "detail": "Login form displayed"
+        }
+      ],
+      "environment": "https://practicetestautomation.com/practice-test-login/",
+      "browser": "chromium"
+    },
+    "script": {
+      "filename": "tests/feat_002_user_authentication_process/test_tc_011.py",
+      "generated_at": "2026-09-13T10:38:19.808479",
+      "generated_from_tc_content_updated_at": "2026-09-13T09:05:10.706613",
+      "last_verified_at": null,
+      "last_verified_status": null,
+      "last_error": null
+    }
+  },
+  "test_result_2": "pass",
+  "metadata.last_run": {
+    "timestamp": "2026-09-13T17:37:00+07:00",
+    "overallStatus": "pass",
+    "steps": [
+      {
+        "step": 1,
+        "status": "pass",
+        "detail": "Navigated to /login page — login form displayed"
+      },
+      {
+        "step": 2,
+        "status": "pass",
+        "detail": "Filled username 'student' and password 'Password123'"
+      },
+      {
+        "step": 3,
+        "status": "pass",
+        "detail": "Clicked Submit — form submitted successfully"
+      },
+      {
+        "step": 4,
+        "status": "pass",
+        "detail": "Redirected to /logged-in-successfully/ — JWT authenticated"
+      }
+    ],
+    "environment": "https://practicetestautomation.com/practice-test-login/",
+    "browser": "chromium"
+  }
+}

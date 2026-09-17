@@ -1,0 +1,56 @@
+{
+  "title": "Forgot Password link chuyển hướng đến trang khôi phục mật khẩu",
+  "description": "Verify rằng khi click vào Forgot Password link, người dùng được redirect đến trang khôi phục mật khẩu.",
+  "type": "ui",
+  "priority": "p1",
+  "status": "active",
+  "layer": "ui",
+  "preconditions": [
+    "Người dùng đang ở trang /login"
+  ],
+  "test_data": "URL: /login",
+  "steps": [
+    {
+      "step_number": 1,
+      "action": "Navigate to /login page",
+      "expected": "Login form hiển thị"
+    },
+    {
+      "step_number": 2,
+      "action": "Click vào link 'Forgot Password'",
+      "expected": "Trình duyệt chuyển hướng đến trang khôi phục mật khẩu"
+    }
+  ],
+  "expected_result": "User được chuyển hướng đến trang khôi phục mật khẩu",
+  "covers": [
+    {
+      "feature_id": "feat_001",
+      "ac_id": "ac_002",
+      "coverage_type": "happy"
+    }
+  ],
+  "tags": [
+    "login",
+    "ui",
+    "forgot_password"
+  ],
+  "estimated_duration": 1,
+  "created_at": "2026-09-13T09:00:00",
+  "automation_feasibility": {
+    "automatable": true,
+    "automation_tools": [
+      "playwright"
+    ],
+    "automation_challenges": []
+  },
+  "testcase_id": "tc_002",
+  "feature_id": "feat_001",
+  "project_id": "app_login",
+  "updated_at": "2026-09-13T09:02:33.111710",
+  "content_updated_at": "2026-09-13T09:02:33.111710",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "ec4daa907deb8f482689cf68fa4929761065bc15cd548965ebf7331ac3c7607d",
+  "schema_version": "3.0.0",
+  "generation": 1
+}

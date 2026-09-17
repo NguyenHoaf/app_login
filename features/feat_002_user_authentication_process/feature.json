@@ -1,0 +1,141 @@
+{
+  "name": "User Authentication Process",
+  "description": "Xử lý luồng xác thực khi người dùng submit thông tin đăng nhập.\n\n## Main Flow\n1. User nhập email + password\n2. Hệ thống validate định dạng email\n3. Hệ thống kiểm tra account tồn tại\n4. Hệ thống verify password khớp với stored hash\n5. Thành công: redirect về /dashboard\n6. Thất bại: hiển thị error message phù hợp\n\n## Error Flow\n- Email invalid format → 'Please enter a valid email address'\n- Account không tồn tại → 'No account found with this email'\n- Sai password → 'Incorrect password. Please try again'\n- Account bị locked → 'Your account has been locked. Please contact support'",
+  "category": "business_flow",
+  "priority": "critical",
+  "sources": [
+    {
+      "doc_id": "qa_upload_9_k65ki0_md",
+      "doc_version": 1,
+      "role": "primary",
+      "source_locators": [
+        "Section 2.2 Authentication Process",
+        "Section 2.4 Error Handling"
+      ],
+      "extracted_at": "2026-09-13T08:54:00.000000"
+    }
+  ],
+  "acceptance_criteria": [
+    {
+      "ac_id": "ac_001",
+      "statement": "User nhập email + password đúng → redirect về dashboard",
+      "given": "User có account active (email đã đăng ký, password đúng hash), đang ở trang /login",
+      "when": "User nhập email hợp lệ và password đúng, click 'Login'",
+      "then": "Hệ thống validate email → kiểm tra account tồn tại → verify password → redirect về /dashboard. Session JWT token được tạo.",
+      "source_doc_id": "qa_upload_9_k65ki0_md",
+      "source_node_id": "sec_001_002_002",
+      "status": "active"
+    },
+    {
+      "ac_id": "ac_002",
+      "statement": "User nhập email không tồn tại → 'No account found with this email'",
+      "given": "User nhập một email chưa đăng ký trong hệ thống",
+      "when": "User click 'Login'",
+      "then": "Hệ thống không tìm thấy account → hiển thị error message 'No account found with this email'. Không redirect.",
+      "source_doc_id": "qa_upload_9_k65ki0_md",
+      "source_node_id": "sec_001_002_002",
+      "status": "active"
+    },
+    {
+      "ac_id": "ac_003",
+      "statement": "User nhập sai password → 'Incorrect password. Please try again'",
+      "given": "User có account active, đã nhập đúng email",
+      "when": "User nhập sai password, click 'Login'",
+      "then": "Hệ thống verify password fails → hiển thị error message 'Incorrect password. Please try again'. Tăng failed attempt counter.",
+      "source_doc_id": "qa_upload_9_k65ki0_md",
+      "source_node_id": "sec_001_002_002",
+      "status": "active"
+    },
+    {
+      "ac_id": "ac_004",
+      "statement": "Account bị locked → 'Your account has been locked. Please contact support'",
+      "given": "User có account đang bị lock",
+      "when": "User nhập email + password và click 'Login'",
+      "then": "Hệ thống phát hiện account locked → hiển thị 'Your account has been locked. Please contact support'. Không cho đăng nhập.",
+      "boundaries": [
+        {
+          "dimension": "count",
+          "value": 5,
+          "inclusive": true
+        },
+        {
+          "dimension": "timeout_ms",
+          "value": 1800000
+        }
+      ],
+      "source_doc_id": "qa_upload_9_k65ki0_md",
+      "source_node_id": "sec_001_002_002",
+      "status": "active"
+    },
+    {
+      "ac_id": "ac_005",
+      "statement": "Server error → 'Unable to process login. Please try again later'",
+      "given": "Hệ thống gặp lỗi server (DB timeout, service unavailable)",
+      "when": "User click 'Login' với thông tin hợp lệ",
+      "then": "Hệ thống catch exception → hiển thị error message 'Unable to process login. Please try again later'. Không redirect.",
+      "source_doc_id": "qa_upload_9_k65ki0_md",
+      "source_node_id": "sec_001_002_002",
+      "status": "active"
+    }
+  ],
+  "business_rules": [
+    {
+      "rule_id": "BR001",
+      "description": "Luồng xác thực tuần tự: validate email format → check account tồn tại → verify password hash"
+    },
+    {
+      "rule_id": "BR002",
+      "description": "Mỗi lần login fail tăng failed_attempts counter cho account"
+    }
+  ],
+  "gap_notes": [
+    {
+      "type": "incomplete_specification",
+      "description": "Không quy định cụ thể redirect URL sau login thành công (chỉ nói 'dashboard' — không rõ exact path)",
+      "severity": "low"
+    },
+    {
+      "type": "undefined_error_behavior",
+      "description": "Không quy định behavior khi account bị deactivated/disabled",
+      "severity": "high",
+      "suggested_resolution": "Bổ sung error handling cho trường hợp account disabled"
+    },
+    {
+      "type": "incomplete_specification",
+      "description": "Không quy định rate limiting cho login attempts (ngoài lockout 5 lần/30 phút — không nói IP-based throttling)",
+      "severity": "medium"
+    },
+    {
+      "type": "incomplete_specification",
+      "description": "Không quy định account locked có auto-unlock sau 30 phút hay chỉ support mới mở được",
+      "severity": "high"
+    }
+  ],
+  "non_functional_requirements": [
+    {
+      "nfr_id": "NFR001",
+      "category": "performance",
+      "description": "Authentication request phải xử lý trong < 3 giây",
+      "metric": "<3000ms",
+      "status": "active",
+      "source_doc_id": "qa_upload_9_k65ki0_md",
+      "source_node_id": "sec_001_002_002"
+    },
+    {
+      "nfr_id": "NFR002",
+      "category": "auditability",
+      "description": "Mọi lần đăng nhập thành công/thất bại phải ghi audit log",
+      "status": "active",
+      "source_doc_id": "qa_upload_9_k65ki0_md",
+      "source_node_id": "sec_001_002_002"
+    }
+  ],
+  "feature_id": "feat_002",
+  "project_id": "app_login",
+  "created_at": "2026-09-13T09:00:42.918289",
+  "updated_at": "2026-09-13T09:00:42.918289",
+  "doc_id": "qa_upload_9_k65ki0_md",
+  "conflict_log": [],
+  "content_hash": "18ae820875b3c369e709317e5f3b315f20f5b973cf8b3359656cebf344610268",
+  "generation": 1
+}

@@ -1,0 +1,90 @@
+{
+  "name": "User Login Form",
+  "description": "Hiển thị giao diện đăng nhập cho phép người dùng nhập email và password.\n\n## Main Flow\n1. Người dùng truy cập trang /login\n2. Hệ thống hiển thị form đăng nhập gồm: trường email, trường password (masked), nút 'Login', link 'Forgot Password'\n3. Email field chấp nhận định dạng email hợp lệ\n4. Password field được che dấu bằng asterisks\n5. Người dùng click 'Login' để gửi thông tin\n6. Người dùng click 'Forgot Password' để chuyển đến trang khôi phục mật khẩu",
+  "category": "business_flow",
+  "priority": "critical",
+  "sources": [
+    {
+      "doc_id": "qa_upload_9_k65ki0_md",
+      "doc_version": 1,
+      "role": "primary",
+      "source_locators": [
+        "Section 2.1 Login Form"
+      ],
+      "extracted_at": "2026-09-13T08:54:00.000000"
+    }
+  ],
+  "acceptance_criteria": [
+    {
+      "ac_id": "ac_001",
+      "statement": "Login form hiển thị đầy đủ email field, password field (masked), Login button và Forgot Password link",
+      "given": "Người dùng chưa đăng nhập, truy cập vào trang /login",
+      "when": "Trang /login được load",
+      "then": "Hiển thị form login gồm email input, password input (type=password), nút 'Login', và link 'Forgot Password'. Password field hiển thị dấu asterisks.",
+      "source_doc_id": "qa_upload_9_k65ki0_md",
+      "source_node_id": "sec_001_002_001",
+      "status": "active"
+    },
+    {
+      "ac_id": "ac_002",
+      "statement": "Forgot Password link chuyển hướng đến trang khôi phục mật khẩu",
+      "given": "Người dùng đang ở trang /login",
+      "when": "Người dùng click vào link 'Forgot Password'",
+      "then": "Hệ thống chuyển hướng người dùng đến trang khôi phục mật khẩu",
+      "source_doc_id": "qa_upload_9_k65ki0_md",
+      "source_node_id": "sec_001_002_001",
+      "status": "active"
+    }
+  ],
+  "business_rules": [
+    {
+      "rule_id": "BR001",
+      "description": "Email field phải chấp nhận định dạng email hợp lệ"
+    },
+    {
+      "rule_id": "BR002",
+      "description": "Password field phải được masked với asterisks"
+    },
+    {
+      "rule_id": "BR003",
+      "description": "Cả email và password fields đều là required"
+    }
+  ],
+  "gap_notes": [
+    {
+      "type": "incomplete_specification",
+      "description": "Không quy định cụ thể placeholder text cho email/password fields",
+      "severity": "medium",
+      "suggested_resolution": "Bổ sung placeholder text cho từng field"
+    },
+    {
+      "type": "missing_boundary_condition",
+      "description": "Không quy định maxlength hiển thị cho email input field",
+      "severity": "low"
+    },
+    {
+      "type": "missing_boundary_condition",
+      "description": "Không quy định maxlength hiển thị cho password input field",
+      "severity": "low"
+    }
+  ],
+  "non_functional_requirements": [
+    {
+      "nfr_id": "NFR001",
+      "category": "usability",
+      "description": "Login form phải hiển thị trong < 2 giây sau khi người dùng truy cập trang /login",
+      "metric": "<2000ms",
+      "status": "active",
+      "source_doc_id": "qa_upload_9_k65ki0_md",
+      "source_node_id": "sec_001_002_001"
+    }
+  ],
+  "feature_id": "feat_001",
+  "project_id": "app_login",
+  "created_at": "2026-09-13T09:00:42.918289",
+  "updated_at": "2026-09-13T09:00:42.918289",
+  "doc_id": "qa_upload_9_k65ki0_md",
+  "conflict_log": [],
+  "content_hash": "ee2830f54dd58bbed0be7adf0d47bedaa23ceb7ad88e7f91496d92b249b864d9",
+  "generation": 1
+}

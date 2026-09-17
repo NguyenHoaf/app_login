@@ -1,0 +1,57 @@
+{
+  "title": "Server error xử lý login — hiển thị error message",
+  "description": "Verify khi server lỗi (DB timeout), hệ thống hiển thị 'Unable to process login. Please try again later'.",
+  "type": "e2e",
+  "priority": "p1",
+  "status": "active",
+  "layer": "e2e",
+  "preconditions": [
+    "Server gặp lỗi tạm thời (DB timeout)"
+  ],
+  "test_data": "Email: test@example.com, Password: TestPass123!",
+  "steps": [
+    {
+      "step_number": 1,
+      "action": "Simulate server error condition (DB timeout)",
+      "expected": "Server ở trạng thái lỗi"
+    },
+    {
+      "step_number": 2,
+      "action": "Nhập credentials hợp lệ và click Login",
+      "expected": "Hệ thống catch exception → 'Unable to process login. Please try again later'. Không redirect."
+    }
+  ],
+  "expected_result": "Error message server error hiển thị",
+  "covers": [
+    {
+      "feature_id": "feat_002",
+      "ac_id": "ac_005",
+      "coverage_type": "error"
+    }
+  ],
+  "tags": [
+    "authentication",
+    "error",
+    "server",
+    "resilience"
+  ],
+  "estimated_duration": 3,
+  "created_at": "2026-09-13T09:02:00",
+  "automation_feasibility": {
+    "automatable": false,
+    "automation_tools": [],
+    "automation_challenges": [
+      "Cần simulate server error — khó thực hiện trong Playwright đơn thuần"
+    ]
+  },
+  "testcase_id": "tc_015",
+  "feature_id": "feat_002",
+  "project_id": "app_login",
+  "updated_at": "2026-09-13T09:05:10.706613",
+  "content_updated_at": "2026-09-13T09:05:10.706613",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "d34e08ecf3402f40e6421d9f37ced1d875c323ba0f6955a3da0632c84bfd1fb0",
+  "schema_version": "3.0.0",
+  "generation": 1
+}

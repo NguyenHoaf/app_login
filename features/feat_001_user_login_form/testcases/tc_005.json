@@ -1,0 +1,61 @@
+{
+  "title": "Login form không cho phép submit với email trống",
+  "description": "Verify rằng nếu để trống email field, hệ thống không cho submit và hiển thị error message phù hợp.",
+  "type": "functional",
+  "priority": "p1",
+  "status": "active",
+  "layer": "ui",
+  "preconditions": [
+    "Người dùng đang ở trang /login"
+  ],
+  "test_data": "Email: (empty), Password: TestPass123!",
+  "steps": [
+    {
+      "step_number": 1,
+      "action": "Navigate to /login page",
+      "expected": "Login form hiển thị"
+    },
+    {
+      "step_number": 2,
+      "action": "Để trống email field, nhập password 'TestPass123!'",
+      "expected": "Email field trống"
+    },
+    {
+      "step_number": 3,
+      "action": "Click 'Login' button",
+      "expected": "Hệ thống hiển thị error message yêu cầu nhập email. Không gửi request authentication."
+    }
+  ],
+  "expected_result": "Không thể submit khi email trống, error message hiển thị",
+  "covers": [
+    {
+      "feature_id": "feat_001",
+      "ac_id": "ac_001",
+      "coverage_type": "negative"
+    }
+  ],
+  "tags": [
+    "login",
+    "validation",
+    "required_field"
+  ],
+  "estimated_duration": 2,
+  "created_at": "2026-09-13T09:00:00",
+  "automation_feasibility": {
+    "automatable": true,
+    "automation_tools": [
+      "playwright"
+    ],
+    "automation_challenges": []
+  },
+  "testcase_id": "tc_005",
+  "feature_id": "feat_001",
+  "project_id": "app_login",
+  "updated_at": "2026-09-13T09:02:33.111710",
+  "content_updated_at": "2026-09-13T09:02:33.111710",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "0b7f40904b18b056b5b43b1d7d87a5d277c736dc87f03c6898420fdba879e36d",
+  "schema_version": "3.0.0",
+  "generation": 1
+}

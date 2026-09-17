@@ -1,0 +1,61 @@
+{
+  "title": "SQL Injection attempt trong email field",
+  "description": "Verify rằng SQL injection payload trong email field không gây ảnh hưởng đến hệ thống.",
+  "type": "security",
+  "priority": "p0",
+  "status": "active",
+  "layer": "e2e",
+  "preconditions": [
+    "Người dùng đang ở trang /login"
+  ],
+  "test_data": "Email: ' OR 1=1 --, Password: TestPass123!",
+  "steps": [
+    {
+      "step_number": 1,
+      "action": "Navigate to /login page",
+      "expected": "Login form hiển thị"
+    },
+    {
+      "step_number": 2,
+      "action": "Nhập SQL injection payload ' OR 1=1 -- vào email field",
+      "expected": "Input được accept"
+    },
+    {
+      "step_number": 3,
+      "action": "Nhập password 'TestPass123!' và click 'Login'",
+      "expected": "Hệ thống xử lý an toàn, trả về error message 'No account found with this email' hoặc tương tự"
+    }
+  ],
+  "expected_result": "SQL injection attempt không thành công",
+  "covers": [
+    {
+      "feature_id": "feat_001",
+      "ac_id": "ac_001",
+      "coverage_type": "negative"
+    }
+  ],
+  "tags": [
+    "login",
+    "security",
+    "sql_injection"
+  ],
+  "estimated_duration": 3,
+  "created_at": "2026-09-13T09:00:00",
+  "automation_feasibility": {
+    "automatable": true,
+    "automation_tools": [
+      "playwright"
+    ],
+    "automation_challenges": []
+  },
+  "testcase_id": "tc_007",
+  "feature_id": "feat_001",
+  "project_id": "app_login",
+  "updated_at": "2026-09-13T09:02:33.111710",
+  "content_updated_at": "2026-09-13T09:02:33.111710",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "8436fbf382ca9e6bfc52f4b97ebf527a67b8fd3af4324b069f1ef8e661cbf24a",
+  "schema_version": "3.0.0",
+  "generation": 1
+}

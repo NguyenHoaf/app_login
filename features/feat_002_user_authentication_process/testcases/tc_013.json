@@ -1,0 +1,61 @@
+{
+  "title": "Đăng nhập với email đúng nhưng sai password",
+  "description": "Verify khi user nhập đúng email nhưng sai password, hiển thị 'Incorrect password. Please try again' và tăng counter.",
+  "type": "e2e",
+  "priority": "p0",
+  "status": "active",
+  "layer": "e2e",
+  "preconditions": [
+    "User có account active với email test@example.com"
+  ],
+  "test_data": "Email: test@example.com, Password: WrongPassword456!",
+  "steps": [
+    {
+      "step_number": 1,
+      "action": "Navigate to /login page",
+      "expected": "Login form hiển thị"
+    },
+    {
+      "step_number": 2,
+      "action": "Nhập email 'test@example.com' và password 'WrongPassword456!'",
+      "expected": "Input fields accept values"
+    },
+    {
+      "step_number": 3,
+      "action": "Click 'Login' button",
+      "expected": "Verify password fail → 'Incorrect password. Please try again'. Counter tăng."
+    }
+  ],
+  "expected_result": "Error message 'Incorrect password. Please try again' hiển thị",
+  "covers": [
+    {
+      "feature_id": "feat_002",
+      "ac_id": "ac_003",
+      "coverage_type": "negative"
+    }
+  ],
+  "tags": [
+    "authentication",
+    "negative",
+    "password"
+  ],
+  "estimated_duration": 2,
+  "created_at": "2026-09-13T09:02:00",
+  "automation_feasibility": {
+    "automatable": true,
+    "automation_tools": [
+      "playwright"
+    ],
+    "automation_challenges": []
+  },
+  "testcase_id": "tc_013",
+  "feature_id": "feat_002",
+  "project_id": "app_login",
+  "updated_at": "2026-09-13T09:05:10.706613",
+  "content_updated_at": "2026-09-13T09:05:10.706613",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "f21b3c7425d3a0ee0eb89607983f37e791b5f41fe6fd65fbaf5715d0321fea71",
+  "schema_version": "3.0.0",
+  "generation": 1
+}
