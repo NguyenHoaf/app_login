@@ -18,12 +18,6 @@
       "created_at": "2026-09-13T09:00:00",
       "updated_at": "2026-09-13T09:02:33.111710"
     },
-    "tc_004": {
-      "feature_id": "feat_001",
-      "status": "active",
-      "created_at": "2026-09-13T09:00:00",
-      "updated_at": "2026-09-13T09:02:33.111710"
-    },
     "tc_005": {
       "feature_id": "feat_001",
       "status": "active",
@@ -62,5 +56,5 @@
     }
   },
   "feature_id": "feat_001",
-  "updated_at": "2026-09-17T15:21:19.672045"
+  "updated_at": "2026-09-17T15:25:02.378958"
 }
