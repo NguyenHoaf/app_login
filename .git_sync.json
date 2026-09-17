@@ -4,6 +4,11 @@
   "configured_by": "hoaf01",
   "configured_at": "2026-09-17T15:12:01.821068",
   "sync_format_version": 1,
-  "last_publish": null,
+  "last_publish": {
+    "commit_sha": "56f4dbf",
+    "by": "hoaf01",
+    "at": "2026-09-17T15:12:03.118672",
+    "summary": "initial setup"
+  },
   "last_update": null
 }
