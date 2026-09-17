@@ -3,16 +3,16 @@
   "deletions": [
     {
       "entity_type": "testcase",
-      "entity_id": "feat_001/tc_004",
-      "name": "feat_001/tc_004",
-      "archived_at": "2026-09-17T15:25:02.410384",
+      "entity_id": "feat_003/tc_024",
+      "name": "feat_003/tc_024",
+      "archived_at": "2026-09-17T15:20:07.299013",
       "by": "unknown"
     },
     {
       "entity_type": "testcase",
-      "entity_id": "feat_003/tc_024",
-      "name": "feat_003/tc_024",
-      "archived_at": "2026-09-17T15:29:28.583223",
+      "entity_id": "feat_001/tc_004",
+      "name": "feat_001/tc_004",
+      "archived_at": "2026-09-17T15:25:02.410384",
       "by": "unknown"
     }
   ]
