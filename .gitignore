@@ -21,6 +21,11 @@ __pycache__/
 _pw_profiles/
 # Backups produced by atomic_write (.bak) — recoverable from git history.
 *.bak
+# Backup suffix used by sync_update_runner._mirror_nonsemantic_files and
+# _copy_document_dir when a non-semantic local file diverges from remote.
+# Without this rule, git add -A stages these dead backups, shipping them to
+# the shared remote where every puller re-backs them up (.local_bak.local_bak …).
+*.local_bak
 trace_graph.json.bak
 session_log.jsonl.bak*
 # trace_graph.json is a derived artifact (rebuilt from source JSON on mtime
