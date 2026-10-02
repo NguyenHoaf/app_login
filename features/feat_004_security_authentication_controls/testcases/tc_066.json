@@ -1,0 +1,65 @@
+{
+  "automation_feasibility": {
+    "automatable": true,
+    "automation_challenges": [],
+    "automation_tools": [
+      "playwright"
+    ]
+  },
+  "covers": [
+    {
+      "ac_id": "ac_007",
+      "coverage_type": "error",
+      "feature_id": "feat_004"
+    }
+  ],
+  "description": "Error: step2 OTP sai → login bị chặn, không cấp session. Theo BR007 flow.",
+  "expected_result": "OTP sai → login fail hoàn toàn, không session, brute-force OTP bị chặn.",
+  "layer": "e2e",
+  "metadata": {
+    "automation_priority": "high"
+  },
+  "preconditions": [
+    "Account có 2FA enabled",
+    "Đúng password, nhưng OTP sai"
+  ],
+  "priority": "p1",
+  "status": "active",
+  "steps": [
+    {
+      "action": "Login email + password đúng",
+      "expected": "Vào trang OTP verification",
+      "step_number": 1
+    },
+    {
+      "action": "Nhập OTP sai '000000', submit",
+      "expected": "Error 'Invalid OTP'. KHÔNG redirect /dashboard, không cấp session/JWT",
+      "step_number": 2
+    },
+    {
+      "action": "Verify DB không có session record mới",
+      "expected": "Login fail ở step OTP, user vẫn ở trang OTP",
+      "step_number": 3
+    }
+  ],
+  "tags": [
+    "security",
+    "2fa",
+    "negative",
+    "error_handling"
+  ],
+  "test_data": "Email: 2fa@example.com | Password đúng | OTP sai: 000000",
+  "title": "[2FA-LOGIN] email+pw đúng nhưng OTP sai → không vào dashboard",
+  "type": "functional",
+  "testcase_id": "tc_066",
+  "feature_id": "feat_004",
+  "project_id": "sync_app",
+  "created_at": "2026-09-17T17:59:51.600075",
+  "updated_at": "2026-09-17T17:59:51.600075",
+  "content_updated_at": "2026-09-17T17:59:51.600075",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "df39059caddf2f168da09490ec1036c5ebf97c5f2296a898fd88a8f3d49ef3f4",
+  "schema_version": "3.0.0",
+  "generation": 1
+}

@@ -1,0 +1,67 @@
+{
+  "automation_feasibility": {
+    "automatable": true,
+    "automation_challenges": [
+      "Cần verify cấu hình HSTS ở tầng HTTP_RAW"
+    ],
+    "automation_tools": [
+      "playwright",
+      "curl"
+    ]
+  },
+  "covers": [
+    {
+      "ac_id": "ac_001",
+      "coverage_type": "negative",
+      "feature_id": "feat_004"
+    }
+  ],
+  "description": "Verify login request qua HTTP (không SSL) bị từ chối hoặc redirect sang HTTPS. Negative path cho AC HTTPS-only. Chống leak plaintext password.",
+  "expected_result": "Không có bất kỳ traffic login nào đi qua HTTP; HTTP bị từ chối/redirect; HSTS header hiện diện.",
+  "layer": "e2e",
+  "metadata": {
+    "automation_priority": "high"
+  },
+  "preconditions": [
+    "Server cấu hình reject hoặc auto-redirect HTTP→HTTPS"
+  ],
+  "priority": "p0",
+  "status": "active",
+  "steps": [
+    {
+      "action": "Mở URL http://{host}/login (HTTP, không SSL)",
+      "expected": "Hệ thống KHÔNG serve login form qua HTTP — reject kết nối hoặc redirect 301/302 sang https://{host}/login",
+      "step_number": 1
+    },
+    {
+      "action": "Nếu redirect, verify đích là HTTPS; thử gửi login trực tiếp qua HTTP bằng DevTools/curl",
+      "expected": "Login request qua HTTP bị từ chối (4xx hoặc connection refused). Password KHÔNG được gửi plaintext trên HTTP",
+      "step_number": 2
+    },
+    {
+      "action": "Verify cấu hình HSTS header",
+      "expected": "Response header có 'Strict-Transport-Security' (HSTS) — ép browser dùng HTTPS",
+      "step_number": 3
+    }
+  ],
+  "tags": [
+    "security",
+    "https",
+    "hsts",
+    "negative"
+  ],
+  "test_data": "Protocol: HTTP (no TLS) | Email: test@example.com",
+  "title": "[HTTPS] Đăng nhập qua HTTP bị từ chối/redirect HTTPS",
+  "type": "security",
+  "testcase_id": "tc_052",
+  "feature_id": "feat_004",
+  "project_id": "sync_app",
+  "created_at": "2026-09-17T17:59:51.600075",
+  "updated_at": "2026-09-17T17:59:51.600075",
+  "content_updated_at": "2026-09-17T17:59:51.600075",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "8c6a9d3e7bc17cc489371392a052b7a6cc5262fd1cbc51833ae7e2991bf73515",
+  "schema_version": "3.0.0",
+  "generation": 1
+}

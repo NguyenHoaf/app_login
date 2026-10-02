@@ -1,0 +1,61 @@
+{
+  "automation_feasibility": {
+    "automatable": false,
+    "automation_challenges": [
+      "Cần SMS test gateway / shared phone — bên ngoài hệ thống"
+    ],
+    "automation_tools": []
+  },
+  "covers": [
+    {
+      "ac_id": "ac_008",
+      "coverage_type": "happy",
+      "feature_id": "feat_004"
+    }
+  ],
+  "description": "Happy: setup/login với method SMS → hệ thống gửi OTP qua SMS. AC008.",
+  "expected_result": "Chọn SMS → OTP gửi qua SMS và verify được.",
+  "layer": "e2e",
+  "metadata": {
+    "automation_priority": "low"
+  },
+  "preconditions": [
+    "User có SĐT verified gắn account",
+    "SMS gateway khả dụng",
+    "Test SĐT nhận được OTP"
+  ],
+  "priority": "p2",
+  "status": "active",
+  "steps": [
+    {
+      "action": "Trong flow 2FA (setup hoặc login), chọn method 'SMS'",
+      "expected": "Hệ thống gọi SMS gateway gửi OTP tới SĐT registered",
+      "step_number": 1
+    },
+    {
+      "action": "Đợi nhận SMS, lấy OTP, nhập vào form verify",
+      "expected": "OTP SMS nhận được; nhập đúng → verify thành công",
+      "step_number": 2
+    }
+  ],
+  "tags": [
+    "security",
+    "2fa",
+    "sms",
+    "functional"
+  ],
+  "test_data": "Method: SMS | Phone: +8490xxxxxxx",
+  "title": "[2FA-SMS] Chọn SMS method → nhận OTP qua SMS",
+  "type": "functional",
+  "testcase_id": "tc_067",
+  "feature_id": "feat_004",
+  "project_id": "sync_app",
+  "created_at": "2026-09-17T17:59:51.600075",
+  "updated_at": "2026-09-17T17:59:51.600075",
+  "content_updated_at": "2026-09-17T17:59:51.600075",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "7e0e13e16af1b85c6f72aff12dfe2783296ecae6bf933c4045f5a33ecdfa67e8",
+  "schema_version": "3.0.0",
+  "generation": 1
+}

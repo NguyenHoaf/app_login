@@ -1,0 +1,61 @@
+{
+  "title": "Email không đúng định dạng — hiển thị error message",
+  "description": "Verify nhiều email không đúng định dạng bị reject với error message phù hợp.",
+  "type": "functional",
+  "priority": "p0",
+  "status": "active",
+  "layer": "e2e",
+  "preconditions": [
+    "Trang /login đã load"
+  ],
+  "test_data": "Emails: 'notanemail', 'test@', '@domain.com', 'test@.com'",
+  "steps": [
+    {
+      "step_number": 1,
+      "action": "Navigate to /login page",
+      "expected": "Login form hiển thị"
+    },
+    {
+      "step_number": 2,
+      "action": "Nhập email 'notanemail' + password, click Login",
+      "expected": "Error message 'Please enter a valid email address'"
+    },
+    {
+      "step_number": 3,
+      "action": "Làm lại với email 'test@', '@domain.com', 'test@.com'",
+      "expected": "Mỗi email đều hiển thị error message phù hợp"
+    }
+  ],
+  "expected_result": "Tất cả email không hợp lệ đều bị reject",
+  "covers": [
+    {
+      "feature_id": "feat_003",
+      "ac_id": "ac_001",
+      "coverage_type": "negative"
+    }
+  ],
+  "tags": [
+    "validation",
+    "email",
+    "negative"
+  ],
+  "estimated_duration": 4,
+  "created_at": "2026-09-13T09:02:00",
+  "automation_feasibility": {
+    "automatable": true,
+    "automation_tools": [
+      "playwright"
+    ],
+    "automation_challenges": []
+  },
+  "testcase_id": "tc_021",
+  "feature_id": "feat_003",
+  "project_id": "app_login",
+  "updated_at": "2026-09-13T09:05:19.131906",
+  "content_updated_at": "2026-09-13T09:05:19.131906",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "3b951b18a4ec317976de15066c22aff1c92e9a04c3eb91f7efffc389bc916798",
+  "schema_version": "3.0.0",
+  "generation": 1
+}

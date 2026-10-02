@@ -1,0 +1,64 @@
+{
+  "automation_feasibility": {
+    "automatable": true,
+    "automation_challenges": [
+      "Cần mock SMS gateway fail"
+    ],
+    "automation_tools": [
+      "playwright"
+    ]
+  },
+  "covers": [
+    {
+      "ac_id": "ac_008",
+      "coverage_type": "error",
+      "feature_id": "feat_004"
+    }
+  ],
+  "description": "Error: gateway SMS lỗi/không phản hồi → user nhận thông báo rõ ràng, có nút retry. Gap-grounded (spec không nói error SMS).",
+  "expected_result": "SMS fail → graceful error + retry option, không block user.",
+  "layer": "e2e",
+  "metadata": {
+    "automation_priority": "low",
+    "gap_ref": "spec feat_004 không quy định error SMS gateway"
+  },
+  "preconditions": [
+    "User chọn SMS method",
+    "SMS gateway bị mock fail (timeout/5xx)"
+  ],
+  "priority": "p2",
+  "status": "active",
+  "steps": [
+    {
+      "action": "Trigger gửi SMS OTP khi gateway mock fail",
+      "expected": "Hệ thống catch lỗi, hiển thị thông báo thân thiện (vd 'Không gửi được OTP, vui lòng thử lại')",
+      "step_number": 1
+    },
+    {
+      "action": "Verify có nút 'Resend OTP' / fallback method",
+      "expected": "User có thể retry hoặc chọn method khác (App). KHÔNG crash, KHÔNG leak stack trace",
+      "step_number": 2
+    }
+  ],
+  "tags": [
+    "security",
+    "2fa",
+    "sms",
+    "error_handling",
+    "gap_grounded"
+  ],
+  "test_data": "SMS gateway: mock trả 503 / timeout",
+  "title": "[2FA-SMS] SMS gateway fail → user được thông báo + retry",
+  "type": "functional",
+  "testcase_id": "tc_068",
+  "feature_id": "feat_004",
+  "project_id": "sync_app",
+  "created_at": "2026-09-17T17:59:51.600075",
+  "updated_at": "2026-09-17T17:59:51.600075",
+  "content_updated_at": "2026-09-17T17:59:51.600075",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "c89fb2f96dc711327066209c42e181b0c0d6b1c1f0c62f4d0ba5524cc2359a84",
+  "schema_version": "3.0.0",
+  "generation": 1
+}

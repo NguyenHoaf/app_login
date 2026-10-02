@@ -1,0 +1,60 @@
+{
+  "automation_feasibility": {
+    "automatable": true,
+    "automation_challenges": [],
+    "automation_tools": [
+      "playwright"
+    ]
+  },
+  "covers": [
+    {
+      "ac_id": "ac_002",
+      "coverage_type": "boundary",
+      "feature_id": "feat_004"
+    }
+  ],
+  "description": "Boundary min-1 (count=5): 4 lần fail là dưới ngưỡng, account vẫn active. Verify off-by-one — không lock sớm ở lần 4.",
+  "expected_result": "4 lần fail (dưới ngưỡng 5) KHÔNG lock; login đúng ngay sau đó vẫn OK.",
+  "layer": "e2e",
+  "metadata": {
+    "automation_priority": "high"
+  },
+  "preconditions": [
+    "Account active: test@example.com / SecurePass123!",
+    "failed_attempts = 0"
+  ],
+  "priority": "p1",
+  "status": "active",
+  "steps": [
+    {
+      "action": "Login FAIL lần 1-4 với 'WrongPass1!'",
+      "expected": "4 lần: error 'Incorrect password'. failed_attempts=4. Account KHÔNG lock, vẫn active",
+      "step_number": 1
+    },
+    {
+      "action": "Login lần 5 với ĐÚNG password 'SecurePass123!'",
+      "expected": "Login thành công, redirect /dashboard. failed_attempts reset về 0 sau login OK",
+      "step_number": 2
+    }
+  ],
+  "tags": [
+    "security",
+    "lockout",
+    "boundary",
+    "off_by_one"
+  ],
+  "test_data": "Sai pw: WrongPass1! | Đúng pw: SecurePass123!",
+  "title": "[LOCKOUT] 4 lần sai → chưa lock, lần 5 với password đúng vẫn login OK",
+  "type": "security",
+  "testcase_id": "tc_054",
+  "feature_id": "feat_004",
+  "project_id": "sync_app",
+  "created_at": "2026-09-17T17:59:51.600075",
+  "updated_at": "2026-09-17T17:59:51.600075",
+  "content_updated_at": "2026-09-17T17:59:51.600075",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "c51a662170694c2c3a68a09edbd607dac1bd546c07e02733ba86e7c0f00e6cbf",
+  "schema_version": "3.0.0",
+  "generation": 1
+}

@@ -58,7 +58,6 @@
   "content_hash": "5f10623678654822abc4c1aeccd90f08501511f5d9d0cf640d50669154b15c82",
   "schema_version": "3.0.0",
   "generation": 4,
-  "test_result_2": "pass",
   "metadata.last_run": {
     "timestamp": "2026-09-13T18:06:00+07:00",
     "overallStatus": "pass",

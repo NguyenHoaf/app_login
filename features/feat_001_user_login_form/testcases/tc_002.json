@@ -46,11 +46,26 @@
   "testcase_id": "tc_002",
   "feature_id": "feat_001",
   "project_id": "app_login",
-  "updated_at": "2026-09-13T09:02:33.111710",
+  "updated_at": "2026-09-29T10:50:39.111525",
   "content_updated_at": "2026-09-13T09:02:33.111710",
   "created_by": "create",
-  "updated_by": "create",
-  "content_hash": "ec4daa907deb8f482689cf68fa4929761065bc15cd548965ebf7331ac3c7607d",
+  "updated_by": "rest_api_session",
+  "content_hash": "2422332e7dd0c50011f0bb3d35adcac9a04a285d3f2f32f74a46d2ffcdcc08c2",
   "schema_version": "3.0.0",
-  "generation": 1
+  "generation": 4,
+  "metadata": {
+    "test_result_2": "Fail",
+    "last_run": {
+      "run_id": "manual_1790653839",
+      "overallStatus": "fail",
+      "status": "fail",
+      "timestamp": "2026-09-29T10:50:39.106467",
+      "duration_ms": null,
+      "browser": "manual",
+      "environment": null,
+      "steps_log": [],
+      "error": null,
+      "note": null
+    }
+  }
 }

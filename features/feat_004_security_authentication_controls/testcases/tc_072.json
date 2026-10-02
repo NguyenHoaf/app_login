@@ -1,0 +1,66 @@
+{
+  "automation_feasibility": {
+    "automatable": false,
+    "automation_challenges": [
+      "Code review / secret-scan thủ công — cần phán đoán con người + truy cập repo"
+    ],
+    "automation_tools": []
+  },
+  "covers": [
+    {
+      "coverage_type": "nfr",
+      "feature_id": "feat_004",
+      "nfr_id": "NFR002"
+    }
+  ],
+  "description": "NFR security: verify JWT signing secret không hard-code trong codebase/config committed. Đọc từ env var hoặc secret manager.",
+  "expected_result": "JWT secret không hard-code; load từ env/vault; không leak trong git.",
+  "layer": "integration",
+  "metadata": {
+    "automation_priority": "low"
+  },
+  "preconditions": [
+    "Truy cập source repo + config deployment",
+    "Biết framework signing config"
+  ],
+  "priority": "p1",
+  "status": "active",
+  "steps": [
+    {
+      "action": "Grep source code & committed config cho literal secret (patterns: 'secret', base64 dài, hardcoded JWT signing key)",
+      "expected": "KHÔNG tìm thấy secret literal trong source/config committed",
+      "step_number": 1
+    },
+    {
+      "action": "Verify secret được load từ ENV var hoặc vault (vd process.env.JWT_SECRET / AWS Secrets Manager)",
+      "expected": "Code reference secret qua env/vault lookup, KHÔNG literal",
+      "step_number": 2
+    },
+    {
+      "action": "Scan git history cho secret từng bị commit (git log -p)",
+      "expected": "Không có secret trong history; nếu có → đã rotate + purge",
+      "step_number": 3
+    }
+  ],
+  "tags": [
+    "security",
+    "nfr",
+    "secrets",
+    "code_review",
+    "manual"
+  ],
+  "test_data": "Scan keywords: jwt_secret, JWT_SECRET, signing_key trong source + git history",
+  "title": "[NFR002] JWT secret key load từ env/vault — không hard-code trong source",
+  "type": "security",
+  "testcase_id": "tc_072",
+  "feature_id": "feat_004",
+  "project_id": "sync_app",
+  "created_at": "2026-09-17T17:59:51.600075",
+  "updated_at": "2026-09-17T17:59:51.600075",
+  "content_updated_at": "2026-09-17T17:59:51.600075",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "b6030ce4ee249f598dd2651323549e11c47ab4d7cb845f557726950e585fffd0",
+  "schema_version": "3.0.0",
+  "generation": 1
+}

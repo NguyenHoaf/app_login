@@ -1,0 +1,64 @@
+{
+  "automation_feasibility": {
+    "automatable": false,
+    "automation_challenges": [
+      "Cần time-mocking cho 1h59m"
+    ],
+    "automation_tools": []
+  },
+  "covers": [
+    {
+      "ac_id": "ac_003",
+      "coverage_type": "boundary",
+      "feature_id": "feat_004"
+    }
+  ],
+  "description": "Boundary max-1: dưới 2h, session còn dùng được. Chống timeout sớm.",
+  "expected_result": "Dưới 2h, session vẫn active — không timeout sớm.",
+  "layer": "e2e",
+  "metadata": {
+    "automation_priority": "low"
+  },
+  "preconditions": [
+    "User đã login, session JWT active"
+  ],
+  "priority": "p2",
+  "status": "active",
+  "steps": [
+    {
+      "action": "Login thành công, thu được session JWT",
+      "expected": "JWT exp = issued + 7200s",
+      "step_number": 1
+    },
+    {
+      "action": "Fast-forward 1h59m59s; truy cập /dashboard với JWT còn hạn",
+      "expected": "Session VẪN valid. /dashboard render bình thường, không bị đá ra",
+      "step_number": 2
+    },
+    {
+      "action": "Ghi nhận request này refresh sliding-session (nếu có)",
+      "expected": "Hoạt động bình thường, gần ngưỡng nhưng chưa expire",
+      "step_number": 3
+    }
+  ],
+  "tags": [
+    "security",
+    "session",
+    "boundary",
+    "timeout"
+  ],
+  "test_data": "Inactivity: 1h59m (7140s) — dưới ngưỡng exp",
+  "title": "[SESSION] 1h59m không hoạt động → session vẫn còn active",
+  "type": "security",
+  "testcase_id": "tc_058",
+  "feature_id": "feat_004",
+  "project_id": "sync_app",
+  "created_at": "2026-09-17T17:59:51.600075",
+  "updated_at": "2026-09-17T17:59:51.600075",
+  "content_updated_at": "2026-09-17T17:59:51.600075",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "0a2ae07dd7bb2ee0e787ed88ffb48cdf8986f9d0e77f3ac8a479dababefdbd43",
+  "schema_version": "3.0.0",
+  "generation": 1
+}

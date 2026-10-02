@@ -1,0 +1,74 @@
+{
+  "automation_feasibility": {
+    "automatable": true,
+    "automation_challenges": [
+      "Cần reset counter giữa các test run"
+    ],
+    "automation_tools": [
+      "playwright"
+    ]
+  },
+  "covers": [
+    {
+      "ac_id": "ac_002",
+      "coverage_type": "boundary",
+      "feature_id": "feat_004"
+    },
+    {
+      "ac_id": "ac_002",
+      "coverage_type": "boundary",
+      "feature_id": "feat_004"
+    }
+  ],
+  "description": "Verify sau đúng 5 lần login fail liên tiếp, account bị lock 30 phút. Boundary min + happy cho BR002/AC002 (count=5 là ngưỡng lock).",
+  "expected_result": "Ngưỡng lock = đúng 5 lần fail; sau khi lock, mọi attempt (kể cả đúng pw) đều bị từ chối trong 30 phút.",
+  "layer": "e2e",
+  "metadata": {
+    "automation_priority": "high"
+  },
+  "preconditions": [
+    "Account active: test@example.com / đúng SecurePass123!",
+    "failed_attempts counter = 0",
+    "Account KHÔNG đang bị lock"
+  ],
+  "priority": "p0",
+  "status": "active",
+  "steps": [
+    {
+      "action": "Login FAIL lần 1-4 với sai password 'WrongPass1!'",
+      "expected": "Lần 1-4: error 'Incorrect password. Please try again'. failed_attempts tăng 1→4. Account chưa lock",
+      "step_number": 1
+    },
+    {
+      "action": "Login FAIL lần 5 với cùng sai password",
+      "expected": "Lần 5: account bị LOCK. Error 'Your account has been locked. Please contact support'. DB: account.locked=true, locked_until=now+30min",
+      "step_number": 2
+    },
+    {
+      "action": "Thử login lại với ĐÚNG password đúng",
+      "expected": "Vẫn bị từ chối với 'account locked' — lock mạnh hơn password đúng",
+      "step_number": 3
+    }
+  ],
+  "tags": [
+    "security",
+    "lockout",
+    "brute_force",
+    "boundary",
+    "regression"
+  ],
+  "test_data": "Email: test@example.com | Sai password: WrongPass1!",
+  "title": "[LOCKOUT] 5 lần sai liên tiếp → account bị lock 30 phút",
+  "type": "security",
+  "testcase_id": "tc_053",
+  "feature_id": "feat_004",
+  "project_id": "sync_app",
+  "created_at": "2026-09-17T17:59:51.600075",
+  "updated_at": "2026-09-17T17:59:51.600075",
+  "content_updated_at": "2026-09-17T17:59:51.600075",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "341fcd93ecc122450dbfc5cf585d155d61007d38e4d15fd5f5b1f02fd5bc445e",
+  "schema_version": "3.0.0",
+  "generation": 1
+}

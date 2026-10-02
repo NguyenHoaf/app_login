@@ -1,0 +1,11 @@
+{
+  "original_id": "feat_003",
+  "entity_type": "feature",
+  "archived_at": "2026-09-17T17:17:28.379033",
+  "archived_by": "",
+  "reason": "User request: archive toàn bộ feat_003 (Input Validation Rules). 7 TC đã được archive trước đó.",
+  "archive_path": "C:\\Users\\vuaro\\AppData\\Local\\QA-Agent\\agent_projects\\sync_app\\archived\\feat_003_20260917_171728",
+  "safe_name": "feat_003",
+  "folder_name": "feat_003_input_validation_rules",
+  "contains_testcases": true
+}

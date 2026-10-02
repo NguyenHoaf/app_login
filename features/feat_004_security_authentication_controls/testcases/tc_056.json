@@ -1,0 +1,61 @@
+{
+  "automation_feasibility": {
+    "automatable": false,
+    "automation_challenges": [
+      "Cần fast-forward thời gian / time-mocking env — môi trường test phải hỗ trợ skip 30 phút"
+    ],
+    "automation_tools": []
+  },
+  "covers": [
+    {
+      "ac_id": "ac_002",
+      "coverage_type": "boundary",
+      "feature_id": "feat_004"
+    }
+  ],
+  "description": "Boundary max (timeout=30min/1800000ms): account tự unlock sau 30 phút. Spec không rõ auto-unlock hay support-only → gap_note high.",
+  "expected_result": "Sau khi hết 30 phút lock, account tự unlock và login đúng thành công.",
+  "layer": "e2e",
+  "metadata": {
+    "automation_priority": "medium",
+    "gap_ref": "auto-unlock chưa rõ spec (gap feat_004)"
+  },
+  "preconditions": [
+    "Account LOCKED, locked_until đã set = now-31min (mô phỏng đã qua 30 phút)",
+    "Đúng password: SecurePass123!"
+  ],
+  "priority": "p1",
+  "status": "active",
+  "steps": [
+    {
+      "action": "Set thời gian hệ thống/DB = now + 31 phút (fast-forward qua locked_until)",
+      "expected": "Cron/border check phát sinh: account.locked = false, failed_attempts reset",
+      "step_number": 1
+    },
+    {
+      "action": "Login với ĐÚNG password 'SecurePass123!'",
+      "expected": "Login thành công, redirect /dashboard, JWT cấp. KHÔNG còn 'account locked'",
+      "step_number": 2
+    }
+  ],
+  "tags": [
+    "security",
+    "lockout",
+    "boundary",
+    "timeout"
+  ],
+  "test_data": "Email: test@example.com | locked_until: -31 phút (time-mocked)",
+  "title": "[LOCKOUT] Sau 30 phút → account auto-unlock, login đúng thành công",
+  "type": "security",
+  "testcase_id": "tc_056",
+  "feature_id": "feat_004",
+  "project_id": "sync_app",
+  "created_at": "2026-09-17T17:59:51.600075",
+  "updated_at": "2026-09-17T17:59:51.600075",
+  "content_updated_at": "2026-09-17T17:59:51.600075",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "fc6a6046c34e1e054abcafe44d58bcb5a5a3c8d8ac17204cfc6772e333e6dd6f",
+  "schema_version": "3.0.0",
+  "generation": 1
+}

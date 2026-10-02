@@ -87,9 +87,9 @@
       "last_verified_at": null,
       "last_verified_status": null,
       "last_error": null
-    }
+    },
+    "test_result_2": "Pass"
   },
-  "test_result_2": "pass",
   "metadata.last_run": {
     "timestamp": "2026-09-13T17:37:00+07:00",
     "overallStatus": "pass",

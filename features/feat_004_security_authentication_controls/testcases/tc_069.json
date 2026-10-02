@@ -1,0 +1,63 @@
+{
+  "automation_feasibility": {
+    "automatable": true,
+    "automation_challenges": [
+      "Cần parse QR + compute TOTP (pyotp)"
+    ],
+    "automation_tools": [
+      "playwright"
+    ]
+  },
+  "covers": [
+    {
+      "ac_id": "ac_009",
+      "coverage_type": "happy",
+      "feature_id": "feat_004"
+    }
+  ],
+  "description": "Happy: setup 2FA với Authenticator App — hiển thị QR, user scan, nhập OTP đúng. AC009.",
+  "expected_result": "Authenticator App method thiết lập/verify được bằng QR + TOTP.",
+  "layer": "e2e",
+  "metadata": {
+    "automation_priority": "medium"
+  },
+  "preconditions": [
+    "User đang setup 2FA",
+    "Authenticator app sẵn sàng (vd Google Authenticator test)"
+  ],
+  "priority": "p1",
+  "status": "active",
+  "steps": [
+    {
+      "action": "Chọn 'Authenticator App'",
+      "expected": "QR code + secret string hiển thị",
+      "step_number": 1
+    },
+    {
+      "action": "Decode QR/secret → generate TOTP hiện tại, nhập vào verify",
+      "expected": "OTP đúng → method thiết lập thành công",
+      "step_number": 2
+    }
+  ],
+  "tags": [
+    "security",
+    "2fa",
+    "totp",
+    "authenticator",
+    "functional"
+  ],
+  "test_data": "Method: Authenticator App | QR secret parse → TOTP",
+  "title": "[2FA-APP] Chọn Authenticator App → QR code → OTP đúng",
+  "type": "functional",
+  "testcase_id": "tc_069",
+  "feature_id": "feat_004",
+  "project_id": "sync_app",
+  "created_at": "2026-09-17T17:59:51.600075",
+  "updated_at": "2026-09-17T17:59:51.600075",
+  "content_updated_at": "2026-09-17T17:59:51.600075",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "5d057602bb68eb128d9275ae1f094526ef9e64b04f1bdf2630b3e42f4250a4c6",
+  "schema_version": "3.0.0",
+  "generation": 1
+}

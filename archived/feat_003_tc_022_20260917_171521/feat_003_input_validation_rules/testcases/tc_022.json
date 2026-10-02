@@ -1,0 +1,64 @@
+{
+  "title": "Email vượt quá 255 ký tự — validation fail (boundary)",
+  "description": "Verify email 255 ký tự được accept, 256 ký tự bị reject.",
+  "type": "functional",
+  "priority": "p1",
+  "status": "active",
+  "layer": "e2e",
+  "preconditions": [
+    "Trang /login đã load"
+  ],
+  "test_data": "Email 255 chars: 'a@' + 'x'*250 + '.com', Email 256 chars: 'a@' + 'x'*251 + '.com'",
+  "steps": [
+    {
+      "step_number": 1,
+      "action": "Navigate to /login page",
+      "expected": "Login form hiển thị"
+    },
+    {
+      "step_number": 2,
+      "action": "Nhập email 255 ký tự + password, click Login",
+      "expected": "Email được accept (pass length validation)"
+    },
+    {
+      "step_number": 3,
+      "action": "Nhập email 256 ký tự + password, click Login",
+      "expected": "Email bị reject vì > 255 characters"
+    }
+  ],
+  "expected_result": "Boundary: 255 pass, 256 reject",
+  "covers": [
+    {
+      "feature_id": "feat_003",
+      "ac_id": "ac_002",
+      "coverage_type": "boundary"
+    }
+  ],
+  "tags": [
+    "validation",
+    "email",
+    "boundary",
+    "length"
+  ],
+  "estimated_duration": 3,
+  "created_at": "2026-09-13T09:02:00",
+  "automation_feasibility": {
+    "automatable": true,
+    "automation_tools": [
+      "playwright"
+    ],
+    "automation_challenges": [
+      "Cần generate email string chính xác 255 và 256 ký tự"
+    ]
+  },
+  "testcase_id": "tc_022",
+  "feature_id": "feat_003",
+  "project_id": "app_login",
+  "updated_at": "2026-09-13T09:05:19.131906",
+  "content_updated_at": "2026-09-13T09:05:19.131906",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "e0dfd7d4f318d03f0dd9c9fcb4d344c7a4d62d76977d9e67c61bb67e5a0667d0",
+  "schema_version": "3.0.0",
+  "generation": 1
+}

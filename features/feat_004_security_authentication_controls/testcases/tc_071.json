@@ -1,0 +1,65 @@
+{
+  "automation_feasibility": {
+    "automatable": true,
+    "automation_challenges": [],
+    "automation_tools": [
+      "curl",
+      "nmap"
+    ]
+  },
+  "covers": [
+    {
+      "coverage_type": "nfr",
+      "feature_id": "feat_004",
+      "nfr_id": "NFR001"
+    }
+  ],
+  "description": "NFR security: verify production endpoint /api/login chỉ reachable qua HTTPS. Defense in depth: no HTTP binding on auth endpoint.",
+  "expected_result": "Auth endpoint chỉ HTTPS; port 80 không process credential.",
+  "layer": "api",
+  "metadata": {
+    "automation_priority": "medium"
+  },
+  "preconditions": [
+    "Biết host production + port 80/443"
+  ],
+  "priority": "p1",
+  "status": "active",
+  "steps": [
+    {
+      "action": "Gửi raw HTTP (port 80) POST tới /api/login",
+      "expected": "Connection refused hoặc 4xx/301→HTTPS. KHÔNG process login qua port 80",
+      "step_number": 1
+    },
+    {
+      "action": "Gửi HTTPS (port 443) POST tới /api/login",
+      "expected": "Endpoint phục vụ bình thường (4xx auth nhưng TLS handshake OK)",
+      "step_number": 2
+    },
+    {
+      "action": "Scan port binding xác nhận auth service không bind port 80",
+      "expected": "Không có HTTP listener cho auth path",
+      "step_number": 3
+    }
+  ],
+  "tags": [
+    "security",
+    "nfr",
+    "https",
+    "infrastructure"
+  ],
+  "test_data": "Endpoints: http://{host}/api/login AND https://{host}/api/login",
+  "title": "[NFR001] Endpoint /login chỉ serve qua HTTPS — không HTTP listener",
+  "type": "security",
+  "testcase_id": "tc_071",
+  "feature_id": "feat_004",
+  "project_id": "sync_app",
+  "created_at": "2026-09-17T17:59:51.600075",
+  "updated_at": "2026-09-17T17:59:51.600075",
+  "content_updated_at": "2026-09-17T17:59:51.600075",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "a79745b86ed4445e90552edf438aaf5ac3b310dcb298444c673a32321eaee00b",
+  "schema_version": "3.0.0",
+  "generation": 1
+}

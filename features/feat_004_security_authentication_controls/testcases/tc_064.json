@@ -1,0 +1,65 @@
+{
+  "automation_feasibility": {
+    "automatable": true,
+    "automation_challenges": [],
+    "automation_tools": [
+      "playwright"
+    ]
+  },
+  "covers": [
+    {
+      "ac_id": "ac_006",
+      "coverage_type": "error",
+      "feature_id": "feat_004"
+    }
+  ],
+  "description": "Error: nhập OTP sai trong bước verify lần đầu → setup không hoàn tất, 2FA KHÔNG bật (tránh lock-out do config sai).",
+  "expected_result": "OTP sai trong setup → 2FA not enabled, user không bị lock-out oan.",
+  "layer": "e2e",
+  "metadata": {
+    "automation_priority": "medium"
+  },
+  "preconditions": [
+    "User đã login ở /settings, đang setup 2FA",
+    "User chưa enable 2FA"
+  ],
+  "priority": "p2",
+  "status": "active",
+  "steps": [
+    {
+      "action": "Bật 2FA, chọn method, đến bước verify OTP",
+      "expected": "Form nhập OTP hiển thị",
+      "step_number": 1
+    },
+    {
+      "action": "Nhập OTP sai '000000', submit",
+      "expected": "Error 'Invalid OTP'. 2FA KHÔNG được bật (user.two_factor_enabled vẫn false)",
+      "step_number": 2
+    },
+    {
+      "action": "Verify login tiếp theo không yêu cầu OTP",
+      "expected": "Login email+pw đúng → vào trực tiếp /dashboard (2FA chưa active)",
+      "step_number": 3
+    }
+  ],
+  "tags": [
+    "security",
+    "2fa",
+    "negative",
+    "error_handling"
+  ],
+  "test_data": "OTP sai: 000000 / 999999",
+  "title": "[2FA-ENABLE] Setup sai OTP → quá trình enable thất bại",
+  "type": "functional",
+  "testcase_id": "tc_064",
+  "feature_id": "feat_004",
+  "project_id": "sync_app",
+  "created_at": "2026-09-17T17:59:51.600075",
+  "updated_at": "2026-09-17T17:59:51.600075",
+  "content_updated_at": "2026-09-17T17:59:51.600075",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "e6aff6db0eaf2be86107e58e308f97d503ef465c42f950372d10f081065ac622",
+  "schema_version": "3.0.0",
+  "generation": 1
+}

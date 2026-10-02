@@ -1,0 +1,67 @@
+{
+  "automation_feasibility": {
+    "automatable": true,
+    "automation_challenges": [],
+    "automation_tools": [
+      "playwright"
+    ]
+  },
+  "covers": [
+    {
+      "ac_id": "ac_001",
+      "coverage_type": "happy",
+      "feature_id": "feat_004"
+    }
+  ],
+  "description": "Verify login request qua HTTPS được chấp nhận, mật khẩu truyền encrypted (TLS). Happy path cho AC password-transmission-over-HTTPS.",
+  "expected_result": "Login thành công, mọi traffic (kể cả password) truyền qua HTTPS encrypted, session hợp lệ.",
+  "layer": "e2e",
+  "metadata": {
+    "automation_priority": "high",
+    "nfr_focus": false
+  },
+  "preconditions": [
+    "Hệ thống cấu hình HTTPS certificate hợp lệ",
+    "User có account active: test@example.com / SecurePass123!"
+  ],
+  "priority": "p0",
+  "status": "active",
+  "steps": [
+    {
+      "action": "Mở browser, điều hướng đến https://{host}/login",
+      "expected": "Trang /login load qua HTTPS (protocol=https, padlock icon hiển thị), không có mixed-content warning",
+      "step_number": 1
+    },
+    {
+      "action": "Nhập email 'test@example.com' và password 'SecurePass123!', click Login",
+      "expected": "Request POST /api/login gửi qua HTTPS. DevTools Network → Request URL bắt đầu 'https://', scheme=TLS, không có plaintext password trên wire",
+      "step_number": 2
+    },
+    {
+      "action": "Verify response + UI redirect",
+      "expected": "Response trả JWT token, UI redirect /dashboard, session được tạo",
+      "step_number": 3
+    }
+  ],
+  "tags": [
+    "security",
+    "https",
+    "tls",
+    "authentication",
+    "smoke"
+  ],
+  "test_data": "Email: test@example.com | Password: SecurePass123! | Protocol: HTTPS",
+  "title": "[HTTPS] Đăng nhập qua HTTPS thành công - mật khẩu truyền an toàn",
+  "type": "security",
+  "testcase_id": "tc_047",
+  "feature_id": "feat_004",
+  "project_id": "sync_app",
+  "created_at": "2026-09-17T17:55:41.757116",
+  "updated_at": "2026-09-17T17:55:41.757116",
+  "content_updated_at": "2026-09-17T17:55:41.757116",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "3eef21c1f9de6215448ae4e9673aa81bb5816961d52ff5189c1c3b4e1693d76c",
+  "schema_version": "3.0.0",
+  "generation": 1
+}

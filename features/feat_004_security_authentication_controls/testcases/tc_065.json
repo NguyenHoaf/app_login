@@ -1,0 +1,63 @@
+{
+  "automation_feasibility": {
+    "automatable": true,
+    "automation_challenges": [
+      "Cần generate current TOTP trong test"
+    ],
+    "automation_tools": [
+      "playwright"
+    ]
+  },
+  "covers": [
+    {
+      "ac_id": "ac_007",
+      "coverage_type": "happy",
+      "feature_id": "feat_004"
+    }
+  ],
+  "description": "Happy: user có 2FA enabled login → step2 OTP prompt → OTP đúng → dashboard. Theo 2FA flow step 4-5.",
+  "expected_result": "Login 2-step hoàn tất đúng: pw → OTP → dashboard.",
+  "layer": "e2e",
+  "metadata": {
+    "automation_priority": "high"
+  },
+  "preconditions": [
+    "Account có 2FA enabled (Authenticator App)",
+    "Đúng password + đúng current TOTP có sẵn"
+  ],
+  "priority": "p0",
+  "status": "active",
+  "steps": [
+    {
+      "action": "Login với email + password đúng",
+      "expected": "KHÔNG vào thẳng dashboard. Redirect sang trang OTP verification",
+      "step_number": 1
+    },
+    {
+      "action": "Trang OTP hiển thị input; nhập current TOTP đúng, submit",
+      "expected": "OTP verified → redirect /dashboard, session JWT cấp, login thành công",
+      "step_number": 2
+    }
+  ],
+  "tags": [
+    "security",
+    "2fa",
+    "mfa",
+    "functional",
+    "smoke"
+  ],
+  "test_data": "Email: 2fa@example.com | Password: SecurePass123! | OTP đúng: TOTP hiện tại",
+  "title": "[2FA-LOGIN] email+password đúng → nhập OTP đúng → vào dashboard",
+  "type": "functional",
+  "testcase_id": "tc_065",
+  "feature_id": "feat_004",
+  "project_id": "sync_app",
+  "created_at": "2026-09-17T17:59:51.600075",
+  "updated_at": "2026-09-17T17:59:51.600075",
+  "content_updated_at": "2026-09-17T17:59:51.600075",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "749f015de7587c944aca5714ee6c16256b1f4b8d7ad3ab001c1515c0387c301a",
+  "schema_version": "3.0.0",
+  "generation": 1
+}

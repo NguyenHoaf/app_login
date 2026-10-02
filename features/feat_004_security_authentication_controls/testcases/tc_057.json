@@ -1,0 +1,70 @@
+{
+  "automation_feasibility": {
+    "automatable": false,
+    "automation_challenges": [
+      "Cần fast-forward 2h / time-mocking hoặc set JWT exp ngắn cho test"
+    ],
+    "automation_tools": []
+  },
+  "covers": [
+    {
+      "ac_id": "ac_003",
+      "coverage_type": "happy",
+      "feature_id": "feat_004"
+    },
+    {
+      "ac_id": "ac_003",
+      "coverage_type": "boundary",
+      "feature_id": "feat_004"
+    }
+  ],
+  "description": "Verify session JWT timeout sau 2 tiếng inactivity (timeout=7200000ms). Happy path cho AC003.",
+  "expected_result": "Session invalid sau đúng 2h inactivity; user bị đá ra và phải login lại.",
+  "layer": "e2e",
+  "metadata": {
+    "automation_priority": "medium"
+  },
+  "preconditions": [
+    "User đã login thành công, có session JWT active",
+    "Không có tương tác nào sau login"
+  ],
+  "priority": "p1",
+  "status": "active",
+  "steps": [
+    {
+      "action": "Login thành công, ghi nhận session JWT + thời điểm login",
+      "expected": "JWT cấp, exp = issued_at + 2h (7200s)",
+      "step_number": 1
+    },
+    {
+      "action": "Fast-forward 2 giờ không có request nào; rồi truy cập /dashboard",
+      "expected": "JWT hết hạn (now > exp). Server trả 401 hoặc redirect về /login",
+      "step_number": 2
+    },
+    {
+      "action": "Verify user phải login lại",
+      "expected": "Form /login hiển thị, session trước invalid",
+      "step_number": 3
+    }
+  ],
+  "tags": [
+    "security",
+    "session",
+    "timeout",
+    "jwt"
+  ],
+  "test_data": "Inactivity: 2 giờ (7200s) | JWT exp claim manual set",
+  "title": "[SESSION] 2 giờ không hoạt động → session hết hạn, yêu cầu login lại",
+  "type": "security",
+  "testcase_id": "tc_057",
+  "feature_id": "feat_004",
+  "project_id": "sync_app",
+  "created_at": "2026-09-17T17:59:51.600075",
+  "updated_at": "2026-09-17T17:59:51.600075",
+  "content_updated_at": "2026-09-17T17:59:51.600075",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "2c23f6f85a57339fca427f1b13c5e6db6ce776652217763c668bf100b5dbe4ed",
+  "schema_version": "3.0.0",
+  "generation": 1
+}

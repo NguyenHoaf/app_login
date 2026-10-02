@@ -1,0 +1,62 @@
+{
+  "title": "Password không chứa chữ số hoặc chỉ có chữ — validation fail",
+  "description": "Verify password chỉ chữ cái hoặc chỉ số bị reject.",
+  "type": "functional",
+  "priority": "p2",
+  "status": "active",
+  "layer": "e2e",
+  "preconditions": [
+    "Trang /login đã load"
+  ],
+  "test_data": "Password only letters: 'PasswordABC!', Password only numbers: '1234567890!'",
+  "steps": [
+    {
+      "step_number": 1,
+      "action": "Navigate to /login page",
+      "expected": "Login form hiển thị"
+    },
+    {
+      "step_number": 2,
+      "action": "Nhập email + password 'PasswordABC!' (only letters+special), click Login",
+      "expected": "Password bị reject vì thiếu chữ số"
+    },
+    {
+      "step_number": 3,
+      "action": "Làm lại với password '1234567890!'",
+      "expected": "Password bị reject vì thiếu chữ cái"
+    }
+  ],
+  "expected_result": "Password thiếu alphanumeric bị reject",
+  "covers": [
+    {
+      "feature_id": "feat_003",
+      "ac_id": "ac_003",
+      "coverage_type": "negative"
+    }
+  ],
+  "tags": [
+    "validation",
+    "password",
+    "negative",
+    "format"
+  ],
+  "estimated_duration": 3,
+  "created_at": "2026-09-13T09:02:00",
+  "automation_feasibility": {
+    "automatable": true,
+    "automation_tools": [
+      "playwright"
+    ],
+    "automation_challenges": []
+  },
+  "testcase_id": "tc_026",
+  "feature_id": "feat_003",
+  "project_id": "app_login",
+  "updated_at": "2026-09-13T09:05:19.131906",
+  "content_updated_at": "2026-09-13T09:05:19.131906",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "52d61ae4a247b27201630f9b5a53fe5023f7ac59ed9760f5920691cd584d55c9",
+  "schema_version": "3.0.0",
+  "generation": 1
+}

@@ -14,6 +14,62 @@
       "name": "feat_001/tc_004",
       "archived_at": "2026-09-17T15:25:02.410384",
       "by": "unknown"
+    },
+    {
+      "entity_type": "testcase",
+      "entity_id": "feat_003/tc_021",
+      "name": "feat_003/tc_021",
+      "archived_at": "2026-09-17T17:15:21.057499",
+      "by": "unknown"
+    },
+    {
+      "entity_type": "testcase",
+      "entity_id": "feat_003/tc_022",
+      "name": "feat_003/tc_022",
+      "archived_at": "2026-09-17T17:15:21.133892",
+      "by": "unknown"
+    },
+    {
+      "entity_type": "testcase",
+      "entity_id": "feat_003/tc_023",
+      "name": "feat_003/tc_023",
+      "archived_at": "2026-09-17T17:15:21.190042",
+      "by": "unknown"
+    },
+    {
+      "entity_type": "testcase",
+      "entity_id": "feat_003/tc_025",
+      "name": "feat_003/tc_025",
+      "archived_at": "2026-09-17T17:15:21.240124",
+      "by": "unknown"
+    },
+    {
+      "entity_type": "testcase",
+      "entity_id": "feat_003/tc_026",
+      "name": "feat_003/tc_026",
+      "archived_at": "2026-09-17T17:15:21.277214",
+      "by": "unknown"
+    },
+    {
+      "entity_type": "testcase",
+      "entity_id": "feat_003/tc_027",
+      "name": "feat_003/tc_027",
+      "archived_at": "2026-09-17T17:15:21.313007",
+      "by": "unknown"
+    },
+    {
+      "entity_type": "testcase",
+      "entity_id": "feat_003/tc_043",
+      "name": "feat_003/tc_043",
+      "archived_at": "2026-09-17T17:15:21.349383",
+      "by": "unknown"
+    },
+    {
+      "entity_type": "feature",
+      "entity_id": "feat_003",
+      "name": "feat_003_input_validation_rules",
+      "archived_at": "2026-09-17T17:17:28.398178",
+      "by": "unknown"
     }
   ]
 }

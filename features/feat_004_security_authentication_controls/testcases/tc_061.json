@@ -1,0 +1,61 @@
+{
+  "automation_feasibility": {
+    "automatable": true,
+    "automation_challenges": [
+      "Cần seed password chứa ký tự đặc biệt"
+    ],
+    "automation_tools": [
+      "playwright"
+    ]
+  },
+  "covers": [
+    {
+      "ac_id": "ac_005",
+      "coverage_type": "regression",
+      "feature_id": "feat_004"
+    }
+  ],
+  "description": "Happy/regression: password có ký tự đặc biệt (<, >, &) vẫn login được khi là password đúng. Đảm bảo encode không false-positive.",
+  "expected_result": "Password hợp lệ có ký tự HTML-ish vẫn login OK — XSS sanitization không cản input hợp lệ.",
+  "layer": "e2e",
+  "metadata": {
+    "automation_priority": "medium"
+  },
+  "preconditions": [
+    "Account password thực sự chứa ký tự đặc biệt: P@ss<w>rd!"
+  ],
+  "priority": "p2",
+  "status": "active",
+  "steps": [
+    {
+      "action": "Nhập email 'test@example.com' + password 'P@ss<w>rd!' (ký tự đặc biệt), submit",
+      "expected": "Password đúng được encode xử lý đúng, login thành công",
+      "step_number": 1
+    },
+    {
+      "action": "Verify hiển thị username/dashboard không render sai ký tự",
+      "expected": "Dashboard render đúng, ký tự đặc biệt không bị escape sai nơi hiển thị",
+      "step_number": 2
+    }
+  ],
+  "tags": [
+    "security",
+    "xss",
+    "regression",
+    "input_handling"
+  ],
+  "test_data": "Email: test@example.com | Password: P@ss<w>rd! (chứa <, >)",
+  "title": "[XSS] Password ký tự đặc biệt hợp lệ → login OK",
+  "type": "security",
+  "testcase_id": "tc_061",
+  "feature_id": "feat_004",
+  "project_id": "sync_app",
+  "created_at": "2026-09-17T17:59:51.600075",
+  "updated_at": "2026-09-17T17:59:51.600075",
+  "content_updated_at": "2026-09-17T17:59:51.600075",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "e7b413e4ab5c3ef448e4da1d204a3947659a5d9db586fdc9195d1e731fb740c6",
+  "schema_version": "3.0.0",
+  "generation": 1
+}

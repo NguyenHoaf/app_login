@@ -1,0 +1,61 @@
+{
+  "automation_feasibility": {
+    "automatable": true,
+    "automation_challenges": [
+      "Cần seed account-locked sẵn"
+    ],
+    "automation_tools": [
+      "playwright"
+    ]
+  },
+  "covers": [
+    {
+      "ac_id": "ac_002",
+      "coverage_type": "negative",
+      "feature_id": "feat_004"
+    }
+  ],
+  "description": "Negative: trong cửa sổ 30 phút lock, mọi login attempt (kể cả đúng password) đều bị từ chối.",
+  "expected_result": "Account locked block hoàn toàn login dù credential đúng — brute-force bị chặn.",
+  "layer": "e2e",
+  "metadata": {
+    "automation_priority": "high"
+  },
+  "preconditions": [
+    "Account test@example.com đang ở trạng thái LOCKED (locked_until = now + 30 min)",
+    "Đúng password đã biết: SecurePass123!"
+  ],
+  "priority": "p0",
+  "status": "active",
+  "steps": [
+    {
+      "action": "Login với ĐÚNG email + ĐÚNG password 'SecurePass123!' lúc account đang locked",
+      "expected": "Login bị từ chối. Error 'Your account has been locked. Please contact support'. KHÔNG redirect /dashboard, không cấp session/JWT",
+      "step_number": 1
+    },
+    {
+      "action": "Verify trong DB không tạo session row mới",
+      "expected": "Không có session record mới cho user này",
+      "step_number": 2
+    }
+  ],
+  "tags": [
+    "security",
+    "lockout",
+    "negative"
+  ],
+  "test_data": "Email: test@example.com | Đúng pw: SecurePass123!",
+  "title": "[LOCKOUT] Account đang locked → login đúng password vẫn bị từ chối",
+  "type": "security",
+  "testcase_id": "tc_055",
+  "feature_id": "feat_004",
+  "project_id": "sync_app",
+  "created_at": "2026-09-17T17:59:51.600075",
+  "updated_at": "2026-09-17T17:59:51.600075",
+  "content_updated_at": "2026-09-17T17:59:51.600075",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "d7a9da7ee95e165ba05e378e791fcbaab53d0135bbd40082ebb4be10b3df5293",
+  "schema_version": "3.0.0",
+  "generation": 1
+}

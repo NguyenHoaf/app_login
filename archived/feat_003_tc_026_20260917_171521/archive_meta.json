@@ -1,0 +1,12 @@
+{
+  "original_id": "feat_003/tc_026",
+  "entity_type": "testcase",
+  "archived_at": "2026-09-17T17:15:21.259955",
+  "archived_by": "",
+  "reason": "User request: xóa tất cả TC của feat_003",
+  "archive_path": "C:\\Users\\vuaro\\AppData\\Local\\QA-Agent\\agent_projects\\sync_app\\archived\\feat_003_tc_026_20260917_171521",
+  "safe_name": "feat_003_tc_026",
+  "folder_name": "feat_003_input_validation_rules",
+  "feature_id": "feat_003",
+  "tc_id": "tc_026"
+}

@@ -1,0 +1,61 @@
+{
+  "automation_feasibility": {
+    "automatable": true,
+    "automation_challenges": [
+      "Cần account email có ký tự nháy seeding"
+    ],
+    "automation_tools": [
+      "playwright"
+    ]
+  },
+  "covers": [
+    {
+      "ac_id": "ac_004",
+      "coverage_type": "regression",
+      "feature_id": "feat_004"
+    }
+  ],
+  "description": "Happy/regression: parameterized query phải chấp nhận input hợp lệ chứa ký tự nháy đơn (tên thật như O'Brien). Chống false-positive reject do escape quá mức.",
+  "expected_result": "Email hợp lệ có dấu nháy đơn vẫn login OK — sanitization không phá vỡ input hợp lệ.",
+  "layer": "e2e",
+  "metadata": {
+    "automation_priority": "medium"
+  },
+  "preconditions": [
+    "Có account registered email: o'brien@example.com / SecurePass123!"
+  ],
+  "priority": "p1",
+  "status": "active",
+  "steps": [
+    {
+      "action": "Mở /login, nhập email \"o'brien@example.com\" + password đúng",
+      "expected": "Input chấp nhận dấu nháy; KHÔNG bị escape/sanitize sai thành lỗi",
+      "step_number": 1
+    },
+    {
+      "action": "Click Login",
+      "expected": "Parameterized query xử lý dấu nháy đúng, login thành công, redirect /dashboard",
+      "step_number": 2
+    }
+  ],
+  "tags": [
+    "security",
+    "sql_injection",
+    "regression",
+    "input_handling"
+  ],
+  "test_data": "Email: o'brien@example.com (chứa dấu nháy) | Password: SecurePass123!",
+  "title": "[SQLi] Email hợp lệ có dấu nháy (O'Brien) → login không bị break",
+  "type": "security",
+  "testcase_id": "tc_059",
+  "feature_id": "feat_004",
+  "project_id": "sync_app",
+  "created_at": "2026-09-17T17:59:51.600075",
+  "updated_at": "2026-09-17T17:59:51.600075",
+  "content_updated_at": "2026-09-17T17:59:51.600075",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "c4fa6bf65b5913a83294f5636c202903f45fb5f250dcfde7cde1a552b2ece04e",
+  "schema_version": "3.0.0",
+  "generation": 1
+}

@@ -1,0 +1,68 @@
+{
+  "automation_feasibility": {
+    "automatable": true,
+    "automation_challenges": [
+      "Cần reset OTP-fail counter giữa runs"
+    ],
+    "automation_tools": [
+      "playwright"
+    ]
+  },
+  "covers": [
+    {
+      "coverage_type": "nfr",
+      "feature_id": "feat_004",
+      "nfr_id": "NFR003"
+    }
+  ],
+  "description": "NFR security: OTP verification có rate limit — tối đa 5 lần OTP sai. Verify brute-force OTP bị chặn ở ngưỡng 5.",
+  "expected_result": "5 OTP sai → rate-limit bật, brute-force OTP bị chặn (theo NFR003 max 5 attempts).",
+  "layer": "e2e",
+  "metadata": {
+    "automation_priority": "medium"
+  },
+  "preconditions": [
+    "Account có 2FA enabled, ở trang OTP verification",
+    "OTP sai chuẩn bị sẵn: 000000..000004"
+  ],
+  "priority": "p1",
+  "status": "active",
+  "steps": [
+    {
+      "action": "Nhập OTP sai lần 1-4, submit mỗi lần",
+      "expected": "Lần 1-4: 'Invalid OTP'. Counter OTP-fail tăng, vẫn cho thử lại",
+      "step_number": 1
+    },
+    {
+      "action": "Nhập OTP sai lần 5",
+      "expected": "Rate-limit trigger: 'Too many attempts'. OTP form bị lock/throttle, không cho thử tiếp",
+      "step_number": 2
+    },
+    {
+      "action": "Thử nhập OTP ĐÚNG ngay sau đó",
+      "expected": "Vẫn bị chặn trong cửa sổ cooldown — brute-force bị block",
+      "step_number": 3
+    }
+  ],
+  "tags": [
+    "security",
+    "nfr",
+    "rate_limiting",
+    "2fa",
+    "brute_force"
+  ],
+  "test_data": "5 OTP sai liên tiếp: 000000, 111111, 222222, 333333, 444444",
+  "title": "[NFR003] Nhập sai OTP 5 lần → bị rate-limit/block OTP",
+  "type": "security",
+  "testcase_id": "tc_073",
+  "feature_id": "feat_004",
+  "project_id": "sync_app",
+  "created_at": "2026-09-17T17:59:51.600075",
+  "updated_at": "2026-09-17T17:59:51.600075",
+  "content_updated_at": "2026-09-17T17:59:51.600075",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "a3705b54255d3a31e4e11a1ce67681178d259df9a68a05b4629fbe005227a180",
+  "schema_version": "3.0.0",
+  "generation": 1
+}

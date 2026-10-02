@@ -1,0 +1,67 @@
+{
+  "automation_feasibility": {
+    "automatable": true,
+    "automation_challenges": [
+      "Cần TOTP secret parsing từ QR"
+    ],
+    "automation_tools": [
+      "playwright"
+    ]
+  },
+  "covers": [
+    {
+      "ac_id": "ac_006",
+      "coverage_type": "happy",
+      "feature_id": "feat_004"
+    }
+  ],
+  "description": "Happy: user vào account settings, enable 2FA, chọn method, verify OTP lần đầu → 2FA bật. Theo 2FA Main Flow trong description.",
+  "expected_result": "2FA bật thành công, yêu cầu OTP ở các lần login tiếp theo.",
+  "layer": "e2e",
+  "metadata": {
+    "automation_priority": "medium"
+  },
+  "preconditions": [
+    "User đã login, ở trang account/settings",
+    "User chưa enable 2FA"
+  ],
+  "priority": "p1",
+  "status": "active",
+  "steps": [
+    {
+      "action": "Truy cập /settings → mục Security → bật toggle 'Enable 2FA'",
+      "expected": "Hệ thống hiển thị lựa chọn method: SMS / Authenticator App",
+      "step_number": 1
+    },
+    {
+      "action": "Chọn 'Authenticator App'; hệ thống hiển thị QR/secret",
+      "expected": "QR code + secret key hiển thị cho user scan vào app",
+      "step_number": 2
+    },
+    {
+      "action": "Scan QR, nhập OTP hiện tại từ app để verify lần đầu",
+      "expected": "OTP đúng → 2FA được KÍCH HOẠT. DB: user.two_factor_enabled=true. Backup codes (nếu có) hiển thị",
+      "step_number": 3
+    }
+  ],
+  "tags": [
+    "security",
+    "2fa",
+    "mfa",
+    "functional"
+  ],
+  "test_data": "Method: Authenticator App | Test OTP setup: 123456",
+  "title": "[2FA-ENABLE] User enable 2FA từ settings, verify OTP → bật thành công",
+  "type": "functional",
+  "testcase_id": "tc_063",
+  "feature_id": "feat_004",
+  "project_id": "sync_app",
+  "created_at": "2026-09-17T17:59:51.600075",
+  "updated_at": "2026-09-17T17:59:51.600075",
+  "content_updated_at": "2026-09-17T17:59:51.600075",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "2aa93bf9e7f0430f94fb6cb21d6d5a45c1de449d560ba769357d25f4d588a5ca",
+  "schema_version": "3.0.0",
+  "generation": 1
+}

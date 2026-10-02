@@ -66,5 +66,6 @@
   "updated_by": "create",
   "content_hash": "46d4df101a6817b88e2ec3a365fbd039d932a6d2f0c4a0b129af3a78c655fc8d",
   "schema_version": "3.0.0",
-  "generation": 1
+  "generation": 1,
+  "metadata": {}
 }

@@ -1,0 +1,68 @@
+{
+  "title": "Email + password hợp lệ — validation pass (required fields happy path)",
+  "description": "Verify khi cả email và password đều hợp lệ (đúng format, đúng độ dài, đầy đủ alphanumeric + special chars) thì validation pass và form được submit.",
+  "type": "functional",
+  "priority": "p1",
+  "status": "active",
+  "layer": "e2e",
+  "preconditions": [
+    "Trang /login đã load"
+  ],
+  "test_data": "Email: 'test.user@example.com', Password: 'ValidPass123!'",
+  "steps": [
+    {
+      "step_number": 1,
+      "action": "Navigate to /login page",
+      "expected": "Login form hiển thị: email field, password field, Login button"
+    },
+    {
+      "step_number": 2,
+      "action": "Nhập email 'test.user@example.com' vào email field",
+      "expected": "Email field hiển thị giá trị đã nhập"
+    },
+    {
+      "step_number": 3,
+      "action": "Nhập password 'ValidPass123!' vào password field",
+      "expected": "Password field hiển thị dấu asterisks (masked)"
+    },
+    {
+      "step_number": 4,
+      "action": "Click 'Login' button",
+      "expected": "Hệ thống gọi API POST /api/login, không có lỗi validation phía client"
+    }
+  ],
+  "expected_result": "Validation pass, form được submit thành công (có thể login pass hoặc fail tùy credentials thật — mục đích TC chỉ verify validation không reject)",
+  "covers": [
+    {
+      "feature_id": "feat_003",
+      "ac_id": "ac_004",
+      "coverage_type": "happy"
+    }
+  ],
+  "tags": [
+    "validation",
+    "required",
+    "happy_path",
+    "email",
+    "password"
+  ],
+  "estimated_duration": 2,
+  "automation_feasibility": {
+    "automatable": true,
+    "automation_tools": [
+      "playwright"
+    ],
+    "automation_challenges": []
+  },
+  "testcase_id": "tc_043",
+  "feature_id": "feat_003",
+  "project_id": "app_login",
+  "created_at": "2026-09-17T15:31:35.879812",
+  "updated_at": "2026-09-17T15:31:35.879812",
+  "content_updated_at": "2026-09-17T15:31:35.879812",
+  "created_by": "create",
+  "updated_by": "create",
+  "content_hash": "8927974d2b594ec9d63501eb80ca4027a7c11b4e60d9cfcf0aced02ad3240244",
+  "schema_version": "3.0.0",
+  "generation": 1
+}

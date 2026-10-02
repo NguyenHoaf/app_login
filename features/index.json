@@ -6,16 +6,23 @@
     "feat_002": {
       "folder_name": "feat_002_user_authentication_process"
     },
-    "feat_003": {
-      "folder_name": "feat_003_input_validation_rules"
-    },
     "feat_004": {
       "folder_name": "feat_004_security_authentication_controls"
     },
     "feat_005": {
       "folder_name": "feat_005_browser_compatibility"
+    },
+    "feat_006": {
+      "folder_name": "feat_006_password_recovery__forgot_password__flow",
+      "doc_id": "qa_upload_9_k65ki0_md",
+      "status": "active",
+      "created_at": "2026-09-17T17:31:11.095345",
+      "updated_at": "2026-09-17T17:31:11.095345"
+    },
+    "feat_003": {
+      "folder_name": "feat_003_input_validation_rules"
     }
   },
-  "updated_at": "2026-09-17T16:54:50.937077",
-  "global_testcase_counter": 43
+  "updated_at": "2026-09-17T18:02:42.709069",
+  "global_testcase_counter": 76
 }
