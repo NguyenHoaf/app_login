@@ -1,0 +1,151 @@
+{
+  "name": "Input Validation Rules",
+  "description": "Validation rules cho email và password fields trong form đăng nhập.\n\n## Flow\n- Validation xảy ra ở server-side\n- Cả hai fields đều required\n- Email: phải valid format, max 255 characters\n- Password: 10-32 characters (v2 updated: từ 8 lên 10), alphanumeric với special chars",
+  "category": "business_flow",
+  "priority": "high",
+  "sources": [
+    {
+      "doc_id": "qa_upload_9_k65ki0_md",
+      "doc_version": 1,
+      "role": "primary",
+      "source_locators": [
+        "Section 2.3 Validation Rules",
+        "Section 6. Updated Requirements"
+      ],
+      "extracted_at": "2026-09-13T08:54:00.000000"
+    }
+  ],
+  "acceptance_criteria": [
+    {
+      "ac_id": "ac_001",
+      "statement": "Email invalid format → 'Please enter a valid email address'",
+      "given": "Người dùng ở trang /login",
+      "when": "User nhập email không đúng định dạng và click 'Login'",
+      "then": "Hệ thống validate email format → fail → hiển thị 'Please enter a valid email address'.",
+      "boundaries": [
+        {
+          "dimension": "format",
+          "value": "RFC 5322 email"
+        },
+        {
+          "dimension": "length",
+          "value": 255,
+          "inclusive": true
+        }
+      ],
+      "source_doc_id": "qa_upload_9_k65ki0_md",
+      "source_node_id": "sec_001_002_003",
+      "status": "active"
+    },
+    {
+      "ac_id": "ac_002",
+      "statement": "Email vượt quá 255 ký tự → validation fail",
+      "given": "Người dùng ở trang /login",
+      "when": "User nhập email > 255 ký tự và click 'Login'",
+      "then": "Hệ thống validate email length → fail → hiển thị error message.",
+      "boundaries": [
+        {
+          "dimension": "value_max",
+          "value": 255,
+          "inclusive": true
+        }
+      ],
+      "source_doc_id": "qa_upload_9_k65ki0_md",
+      "source_node_id": "sec_001_002_003",
+      "status": "active"
+    },
+    {
+      "ac_id": "ac_003",
+      "statement": "VER2: Password từ 10-32 ký tự, alphanumeric + special chars",
+      "given": "Người dùng ở trang /login",
+      "when": "User nhập password không đúng format hoặc không đủ độ dài",
+      "then": "Hệ thống validate password policy → fail → hiển thị error message.",
+      "boundaries": [
+        {
+          "dimension": "value_min",
+          "value": 10,
+          "inclusive": true
+        },
+        {
+          "dimension": "value_max",
+          "value": 32,
+          "inclusive": true
+        },
+        {
+          "dimension": "format",
+          "value": "alphanumeric + special characters"
+        }
+      ],
+      "source_doc_id": "qa_upload_9_k65ki0_md",
+      "source_node_id": "sec_001_002_003",
+      "status": "active"
+    },
+    {
+      "ac_id": "ac_004",
+      "statement": "Cả email và password đều required — không submit nếu 1 trong 2 trống",
+      "given": "Người dùng ở trang /login",
+      "when": "User để trống email hoặc password (hoặc cả hai) và click 'Login'",
+      "then": "Hệ thống kiểm tra required fields → fail → hiển thị error message.",
+      "boundaries": [
+        {
+          "dimension": "empty_allowed",
+          "value": false
+        }
+      ],
+      "source_doc_id": "qa_upload_9_k65ki0_md",
+      "source_node_id": "sec_001_002_003",
+      "status": "active"
+    }
+  ],
+  "business_rules": [
+    {
+      "rule_id": "BR001",
+      "description": "Email phải valid format, max 255 characters"
+    },
+    {
+      "rule_id": "BR002",
+      "description": "Password phải từ 10-32 characters, alphanumeric với special chars (v2: min từ 8 lên 10)"
+    },
+    {
+      "rule_id": "BR003",
+      "description": "Cả email và password là required"
+    }
+  ],
+  "conflict_log": [
+    {
+      "ac_id": "ac_003",
+      "conflict_desc": "Section 2.3 quy định Password 8-32 characters, Section 6 nói password policy updated: minimum 10 characters",
+      "sources": [
+        "qa_upload_9_k65ki0_md (sec_001_002_003)",
+        "qa_upload_9_k65ki0_md (sec_001_006)"
+      ],
+      "canonical_statement": "Password minimum 10 characters (policy updated from 8)",
+      "detected_at": "2026-09-13T08:54:00",
+      "resolution": "primary_wins"
+    }
+  ],
+  "gap_notes": [
+    {
+      "type": "missing_validation_rule",
+      "description": "Không quy định cụ thể regex pattern cho email format",
+      "severity": "high"
+    },
+    {
+      "type": "missing_validation_rule",
+      "description": "Không quy định special characters nào được phép trong password",
+      "severity": "high"
+    },
+    {
+      "type": "missing_validation_rule",
+      "description": "Không quy định có trim whitespace cho email trước khi validate không",
+      "severity": "medium"
+    }
+  ],
+  "feature_id": "feat_003",
+  "project_id": "app_login",
+  "created_at": "2026-09-13T09:00:42.918289",
+  "updated_at": "2026-09-13T09:00:42.918289",
+  "doc_id": "qa_upload_9_k65ki0_md",
+  "content_hash": "053ce9047adb11e31bfc43bcd713b2a8f23b2922371779e4d1f65c0aece16ed5",
+  "generation": 1
+}

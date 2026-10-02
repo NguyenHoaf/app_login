@@ -1,0 +1,11 @@
+{
+  "original_id": "feat_008",
+  "entity_type": "feature",
+  "archived_at": "2026-10-02T12:34:50.292664",
+  "archived_by": "",
+  "reason": "Fail-open clone of feat_006 created by diagnostic no-op update attempt (broken save_features(mode=update) dispatcher — lookup-by-id misses every target and mints new id). Duplicate of feat_006 content, 0 TC. Cleanup per user precedent.",
+  "archive_path": "C:\\Users\\vuaro\\AppData\\Local\\QA-Agent\\agent_projects\\sync_app\\archived\\feat_008_20261002_123450",
+  "safe_name": "feat_008",
+  "folder_name": "feat_008_password_recovery__forgot_password__flow",
+  "contains_testcases": true
+}

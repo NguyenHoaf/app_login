@@ -66,9 +66,16 @@
     },
     {
       "entity_type": "feature",
-      "entity_id": "feat_003",
-      "name": "feat_003_input_validation_rules",
-      "archived_at": "2026-09-17T17:17:28.398178",
+      "entity_id": "feat_007",
+      "name": "feat_007_input_validation_rules",
+      "archived_at": "2026-10-02T12:34:45.733282",
+      "by": "unknown"
+    },
+    {
+      "entity_type": "feature",
+      "entity_id": "feat_008",
+      "name": "feat_008_password_recovery__forgot_password__flow",
+      "archived_at": "2026-10-02T12:34:50.333579",
       "by": "unknown"
     }
   ]

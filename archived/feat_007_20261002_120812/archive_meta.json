@@ -1,0 +1,11 @@
+{
+  "original_id": "feat_007",
+  "entity_type": "feature",
+  "archived_at": "2026-10-02T12:08:12.323140",
+  "archived_by": "",
+  "reason": "Second duplicate clone created by repeated save_features(mode=update, feat_003) fail-open — index metadata was complete this time, so root cause is deeper (suspect foreign project_id=app_login inside feat_001-005 feature.json). Archived per user precedent (Hòa 2026-10-02: keep feat_003, archive clean clone, record bug).",
+  "archive_path": "C:\\Users\\vuaro\\AppData\\Local\\QA-Agent\\agent_projects\\sync_app\\archived\\feat_007_20261002_120812",
+  "safe_name": "feat_007",
+  "folder_name": "feat_007_input_validation_rules",
+  "contains_testcases": true
+}

@@ -9,8 +9,8 @@
         },
         {
           "dimension": "length",
-          "inclusive": true,
-          "value": 255
+          "value": 255,
+          "inclusive": true
         }
       ],
       "given": "Người dùng ở trang /login",
@@ -26,8 +26,8 @@
       "boundaries": [
         {
           "dimension": "value_max",
-          "inclusive": true,
-          "value": 255
+          "value": 255,
+          "inclusive": true
         }
       ],
       "given": "Người dùng ở trang /login",
@@ -42,14 +42,18 @@
       "ac_id": "ac_003",
       "boundaries": [
         {
-          "dimension": "value_max",
-          "inclusive": true,
-          "value": 32
+          "dimension": "value_min",
+          "value": 10,
+          "inclusive": true
         },
         {
-          "dimension": "value_min",
-          "inclusive": true,
-          "value": 10
+          "dimension": "value_max",
+          "value": 32,
+          "inclusive": true
+        },
+        {
+          "dimension": "format",
+          "value": "alphanumeric + special characters"
         }
       ],
       "given": "Người dùng ở trang /login",
@@ -79,16 +83,16 @@
   ],
   "business_rules": [
     {
-      "rule_id": "BR001",
-      "description": "Email phải valid format, max 255 characters"
+      "description": "Email phải valid format, max 255 characters",
+      "rule_id": "BR001"
     },
     {
-      "rule_id": "BR002",
-      "description": "Password phải từ 10-32 characters, alphanumeric với special chars (v2: min từ 8 lên 10)"
+      "description": "Password phải từ 10-32 characters, alphanumeric với special chars (v2: min từ 8 lên 10)",
+      "rule_id": "BR002"
     },
     {
-      "rule_id": "BR003",
-      "description": "Cả email và password là required"
+      "description": "Cả email và password là required",
+      "rule_id": "BR003"
     }
   ],
   "category": "business_flow",
@@ -106,7 +110,8 @@
     }
   ],
   "description": "Validation rules cho email và password fields trong form đăng nhập.\n\n## Flow\n- Validation xảy ra ở server-side\n- Cả hai fields đều required\n- Email: phải valid format, max 255 characters\n- Password: 10-32 characters (v2 updated: từ 8 lên 10), alphanumeric với special chars",
-  "feature_id": "feat_003",
+  "doc_id": "qa_upload_9_k65ki0_md",
+  "feature_id": "feat_007",
   "gap_notes": [
     {
       "description": "Không quy định cụ thể regex pattern cho email format",
@@ -124,9 +129,9 @@
       "type": "missing_validation_rule"
     },
     {
-      "description": "NFR001 (inline validation error on blur) có nguồn là user requirement ngày 2026-10-02 (anh Hòa), CHƯA có trong spec v1 — giữ theo yêu cầu user; cần PO/BA bổ sung vào spec chính thức",
+      "description": "NFR001 (inline validation error on blur) có nguồn là user requirement ngày 2026-10-02, CHƯA có trong spec v1 — body section 2.3 không chứa text này. Giữ NFR theo yêu cầu user; cần PO/BA bổ sung vào spec chính thức để khép vòng truy xuất nguồn.",
       "severity": "medium",
-      "suggested_resolution": "PO/BA bổ sung yêu cầu inline validation (on-blur error display) vào Section 2.3 ở version spec tiếp theo",
+      "suggested_resolution": "PO/BA bổ sung yêu cầu inline validation (on-blur error display) vào Section 2.3 Validation Rules ở version spec tiếp theo",
       "type": "incomplete_specification"
     }
   ],
@@ -155,12 +160,9 @@
       ]
     }
   ],
-  "status": "active",
-  "doc_id": "qa_upload_9_k65ki0_md",
   "project_id": "sync_app",
-  "_resolved_doc_id": "qa_upload_9_k65ki0_md",
-  "created_at": "2026-10-02T12:34:20.594247",
-  "updated_at": "2026-10-02T12:34:20.594247",
-  "content_hash": "8e0184fdc38e4f4df539e8bde062749423b3dd318107df459198de670593b60b",
-  "generation": 2
+  "created_at": "2026-10-02T12:11:31.824476",
+  "updated_at": "2026-10-02T12:11:31.824476",
+  "content_hash": "b2b1caf4221a6a8764ffe18e567ca90fd7fa8da25418d9b1dbc5590f02ae14c4",
+  "generation": 1
 }

@@ -1,0 +1,11 @@
+{
+  "original_id": "feat_007",
+  "entity_type": "feature",
+  "archived_at": "2026-10-02T11:59:43.611074",
+  "archived_by": "",
+  "reason": "Duplicate created by save_features(mode=update, feat_003) fail-open bug — feature_id in payload but target has archived/restored-by-sync state → minted feat_NNN as create. User (Hòa) decision 2026-10-02: keep feat_003, drop NFR001 this round, record bug. 0 testcases attached — clean archive.",
+  "archive_path": "C:\\Users\\vuaro\\AppData\\Local\\QA-Agent\\agent_projects\\sync_app\\archived\\feat_007_20261002_115943",
+  "safe_name": "feat_007",
+  "folder_name": "feat_007_input_validation_rules",
+  "contains_testcases": true
+}

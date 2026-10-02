@@ -1,0 +1,11 @@
+{
+  "original_id": "feat_007",
+  "entity_type": "feature",
+  "archived_at": "2026-10-02T12:34:45.622241",
+  "archived_by": "",
+  "reason": "Third fail-open clone of feat_003 by broken save_features(mode=update) dispatcher (lookup-by-id always misses → mint new). Duplicate of feat_003 content, 0 TC. feat_003 successfully updated via draft+promote path instead. Cleanup per user precedent.",
+  "archive_path": "C:\\Users\\vuaro\\AppData\\Local\\QA-Agent\\agent_projects\\sync_app\\archived\\feat_007_20261002_123445",
+  "safe_name": "feat_007",
+  "folder_name": "feat_007_input_validation_rules",
+  "contains_testcases": true
+}
